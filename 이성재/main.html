@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Main Page</title>
-    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="/이성재/main.css" />
   </head>
   <body>
     <!-- top menu -->
@@ -34,7 +34,10 @@
           <!-- 맛집랭킹 타이틀-->
           <div class="rank-title"><span id="rank-title">맛집 랭킹</span></div>
           <!-- 맛집랭킹 1~3순위.. div로만 걸어놓고 JS로 API 걸면 되려나? -->
-          <div class="rank-num num1"></div>
+          <!-- 순위 구역 좀 더 나눠주고 inlineblock이나 grid로 3등분하기 -->
+          <div class="rank-num num1">
+            <input type="text" class="racnk-num-one" />
+          </div>
           <div class="rank-num num2"></div>
           <div class="rank-num num3"></div>
         </div>
