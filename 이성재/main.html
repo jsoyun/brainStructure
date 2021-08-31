@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Page</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <!-- top menu -->
+    <header>
+      <!-- 라인마다 주석 달기 -->
+      <div class="header_container"></div>
+    </header>
+    <!-- main contents -->
+    <main>
+      <!-- 카테고리, 맛집랭킹, 베스트 리뷰 세개를 다 감싸는 박스 -->
+      <div class="main-container">
+        <!-- 카테고리 전체 박스 -->
+        <div class="categ-container">
+          <!-- 카테고리 타이틀 -->
+          <div class="categ-title"><span id="categ-title">카테고리</span></div>
+          <!-- 카테고리 세부내용 -->
+          <div class="categ-menu menu1"><a href="">치킨</a></div>
+          <div class="categ-menu menu2"><a href="">피자</a></div>
+          <div class="categ-menu menu3"><a href="">분식</a></div>
+          <div class="categ-menu menu4"><a href="">족발/보쌈</a></div>
+          <div class="categ-menu menu5"><a href="">찜/탕</a></div>
+          <div class="categ-menu menu6"><a href="">일식/돈까스</a></div>
+        </div>
+        <!-- 맛집랭킹 전체 박스 -->
+        <div class="rank-container">
+          <!-- 맛집랭킹 타이틀-->
+          <div class="rank-title"><span id="rank-title">맛집 랭킹</span></div>
+          <!-- 맛집랭킹 1~3순위.. div로만 걸어놓고 JS로 API 걸면 되려나? -->
+          <div class="rank-num num1"></div>
+          <div class="rank-num num2"></div>
+          <div class="rank-num num3"></div>
+        </div>
+        <!-- 베스트리뷰 전체 박스 -->
+        <div class="review-container">
+          <!-- 베스트 리뷰 타이틀 -->
+          <div class="review-title">
+            <span id="review-title">베스트 리뷰</span>
+          </div>
+          <!-- 베스트 리뷰 1~3 순위.. 위와 다른 방식? -->
+          <div class="review-num num1"></div>
+          <div class="review-num num2"></div>
+          <div class="review-num num3"></div>
+        </div>
+      </div>
+    </main>
+    <!-- footer -->
+    <footer></footer>
+  </body>
+</html>
