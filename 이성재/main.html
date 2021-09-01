@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Main Page</title>
     <link rel="stylesheet" href="/이성재/main.css" />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <!-- top menu -->
@@ -21,40 +26,59 @@
         <div class="categ-container">
           <!-- 카테고리 타이틀 -->
           <div class="categ-title"><span id="categ-title">카테고리</span></div>
-          <!-- 카테고리 세부내용(한식에 해놓은 것처럼 이미지 넣어서 링크 넣을 예정) -->
-          <div class="categ-menu menu1">
+          <!-- 카테고리 세부내용 -->
+          <div class="categ-menu">
             <a href="" class="thumbnail" ng-click="select-home-category('한식')"
-              ><div class="categ-menu-kor">한식</div>
-              <!-- <img
+              ><div class="categ-menu-sub">한식
+              <img
                 src="/이성재/img/bibimbap.png"
-                width="40rem"
-                height="40rem"
-                alt=""
-              /> -->
+                class="categ-menu-sub-img"
+              />
             </a>
           </div>
-          <div class="categ-menu menu2">
+          </div>
+          <div class="categ-menu">
             <a href="" class="thumbnail" ng-click="select-home-category('일식')"
-              >일식</a
-            >
+              ><div class="categ-menu-sub">일식
+              <img
+                src="/이성재/img/sushi.png"
+                class="categ-menu-sub-img"
+              />
+            </a>
           </div>
-          <div class="categ-menu menu3">
+          </div>
+          <div class="categ-menu">
             <a href="" class="thumbnail" ng-click="select-home-category('중식')"
-              >중식</a
-            >
+              ><div class="categ-menu-sub">중식
+              <img
+                src="/이성재/img/chinese.png"
+                class="categ-menu-sub-img"
+              />
+            </a>
           </div>
-          <div class="categ-menu menu4">
+          </div>
+          <div class="categ-menu">
             <a href="" class="thumbnail" ng-click="select-home-category('양식')"
-              >양식</a
-            >
+              ><div class="categ-menu-sub">양식
+              <img
+                src="/이성재/img/pizza.png"
+                class="categ-menu-sub-img"
+              />
+            </a>
           </div>
-          <div class="categ-menu menu5">
+          </div>
+          <div class="categ-menu">
             <a
               href=""
               class="thumbnail"
               ng-click="select-home-category('간편식')"
-              >간편식</a
-            >
+              ><div class="categ-menu-sub">간편식
+              <img
+                src="/이성재/img/sandwich.png"
+                class="categ-menu-sub-img"
+              />
+            </a>
+          </div>
           </div>
         </div>
         <!-- 맛집랭킹 전체 박스 -->
@@ -82,5 +106,6 @@
     </main>
     <!-- footer -->
     <footer></footer>
+    <script src="../이성재/main.js"></script>
   </body>
 </html>
