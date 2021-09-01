@@ -21,8 +21,21 @@ function usrIconClick() {
   });
 }
 
+// 리스트 모두 제거
 function clearAllButton(){
-
+  let index = -1;
+  // id를 찾아서 찾으면 index=1
+  for (let i = 0; i < list.length; i++) {
+      if(list[i].id===id){
+          index=1;
+          break;
+      }
+      // 찾지 못했으면 index=-1
+  }
+  if(index!==-1){
+      list.splice(index,1);
+  }
+  return list;
 }
 
 function recentTabClick() {
