@@ -1,22 +1,27 @@
-*{
+* {
     font-size: 16px;
     padding: 0;
     margin: 0;
-}
-a{
+  }
+  *{
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+  }
+  a{
     text-decoration: none;
     color: inherit;
-}
-li{
+  }
+  li{
     list-style: none;
-}
-button:hover{
+  }
+  button:hover{
     cursor: pointer;
-}
-/******************/
-/***** header *****/
-/******************/
-header{
+  }
+  /******************/
+  /***** header *****/
+  /******************/
+  header{
     position: fixed;
     padding: 0;
     margin: 0;
@@ -24,9 +29,9 @@ header{
     margin-top: 1rem;
     margin-bottom: 1rem;
     background-color: #fff;
-}
-/* 헤더 컨테이너 */
-.header_container{
+  }
+  /* 헤더 컨테이너 */
+  .header_container{
     width: 100%;
     height: 4rem;
     display: grid;
@@ -34,51 +39,51 @@ header{
     align-items: center;
     text-align: center;
     padding: 0.25rem;
-}
-/* 홈 타이틀 박스 */
-.title-box{
+  }
+  /* 홈 타이틀 박스 */
+  .title-box{
     display: flex;
     justify-content: center;
     height: 4rem;
     text-align: center;
-}
-#btn-main{
+  }
+  #btn-main{
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-#btn-main>h1{
+  }
+  #btn-main>h1{
     width: 10rem;
     margin-top: 0.5rem;
     height: 1.75rem;
     font-size: 1.5rem;
     color: red;
-}
-#btn-main>h2{
+  }
+  #btn-main>h2{
     height: 1.25rem;
     font-size: 1rem;
     color: red;
-}
-.logo-img>img{
+  }
+  .logo-img>img{
     width: 3.5rem;
-}
-/* 검색창 박스 */
-.search-box{
+  }
+  /* 검색창 박스 */
+  .search-box{
     margin: 0.4rem auto;
     width: 35rem;
     height: 3rem;
     text-align: center;
     border: 3px solid red;
     border-radius: 30px;
-}
-#search-text{
+  }
+  #search-text{
     border: none;
     width: 25rem;
     font-size: 1.5rem;
     height: 2rem;
     
-}
-.search-box>span{
+  }
+  .search-box>span{
     float: right;
     background-color: red;
     width: 5rem;
@@ -88,36 +93,36 @@ header{
     font-weight: bold;
     font-size: 1.25rem;
     line-height: 3rem;
-}
-/* 히스토리로 가는 버튼 */
-#btn-icon{
+  }
+  /* 히스토리로 가는 버튼 */
+  #btn-icon{
     
-}
-.user-icon{
+  }
+  .user-icon{
     border: none;
     background-color: transparent;
     width: 2rem;
     height: 2rem;
-    background-image: url(./user.png);
+    background-image: url(../images/user.png);
     background-size: cover;
-}
-/**********************/
-/***** 드롭다운 창 *****/
-/**********************/
-.history-opened{
+  }
+  /**********************/
+  /***** 드롭다운 창 *****/
+  /**********************/
+  .history-opened{
     display: none;
-}
-
-.blacked-window{
+  }
+  
+  .blacked-window{
     position: fixed;
     background-color: rgba(0,0,0,0.6);
     width: 100%;
     height: 100%;
     z-index: 1100;
     display: none;
-}
-/* 히스토리 컨테이너 */
-.history-container{
+  }
+  /* 히스토리 컨테이너 */
+  .history-container{
     position: absolute;
     top: 5rem;
     right: 5rem;
@@ -130,21 +135,21 @@ header{
     flex-direction: column;
     z-index: 1200;
     overflow-y: auto;
-}
-
+  }
+  
     /* 탭 부분 및 히스토리 헤더 */
-.tab-list{
+  .tab-list{
     display: flex;
     height: 3rem;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content:center;
-}
-.tab-item>button:hover{
+  }
+  .tab-item>button:hover{
     border-bottom: 2px solid red;
     cursor: pointer;
-}
-.tab-item>button{
+  }
+  .tab-item>button{
     display: inline-block;
     width: 10rem;
     border: none;
@@ -154,139 +159,241 @@ header{
     line-height: 3rem;
     text-align: center;
     font-size: 1rem;
-}
-.history-contents-container{
+  }
+  .history-contents-container{
     height: 26rem;
-}
-.history-contents-header{
+  }
+  .history-contents-header{
     margin: 0.5rem 1rem 0 1rem ;
     display: flex;
     justify-content: flex-end;
-}
-.clear-btn{
+  }
+  .clear-btn{
     border: none;
     background-color: transparent;
     color: #bbb;
-}
+  }
     /* 히스토리 컨텐츠 부분 */
-.restaurant-list{
+  .restaurant-list{
     /* default로 숨겨둠 */
     display: none;
     margin-top: 1rem;
     margin-left: 1rem;
     margin-right: 0.5rem;
-}
-.restaurant-item-detail{
+  }
+  .restaurant-item-detail{
     display: flex;
     justify-content: center;
     margin-bottom: 1rem;
-}
-.restaurant-img-wrap{
+  }
+  .restaurant-img-wrap{
     width: 4rem;
     height: 4rem;
     margin-right: 1rem;
-}
-.restaurant-info-box{
+  }
+  .restaurant-info-box{
     width: 10rem;
     margin-right: 1rem;
-}
-.restaurant-name-wrap{
+  }
+  .restaurant-name-wrap{
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
-}
-.restaurant-name{
+  }
+  .restaurant-name{
     color: #333;
     font-weight: bold;
     font-size: 1rem;
-}
-.restaurant-desc{
+  }
+  .restaurant-desc{
     color: #555;
     font-size: 0.75rem;
-}
-
-.wannaGo-btn{
+  }
+  
+  .wannaGo-btn{
     border: none;
     background-color: transparent;
     width: 2rem;
     height: 2rem;
-    background-image: url(./star_empty.png);
-}
-
+    background-image: url(../images/star_empty.png);
+  }
+  
     /* 히스토리 footer 부분 */
-.history-footer{
+  .history-footer{
     height: 2rem;
     bottom: 0;
     padding: 0.5rem 1rem;
     text-align: center;
-}
-.history-footer>button{
+  }
+  .history-footer>button{
     border: none;
     background-color: transparent;
     line-height: 2rem;;
-}
-.history-footer>.login-btn{
+  }
+  .history-footer>.login-btn{
     text-align: center;
     width: 13rem;
     border: 2px solid red;
     border-radius: 30px;
     /* display: none; */
-}
-.history-footer>.profile-btn{
+  }
+  .history-footer>.profile-btn{
     /* default로 숨겨둠 */
     float: right;
     display: none;
-}
-
-/* 클릭 효과, js에서 바꾸기 */
-.wannaGo-btn:active{
+  }
+  
+  /* 클릭 효과, js에서 바꾸기 */
+  .wannaGo-btn:active{
     animation: wannaGoClickEffect 0.4s ease-out;
     animation-iteration-count: 1;
-}
-@keyframes wannaGoClickEffect {
+  }
+  @keyframes wannaGoClickEffect {
     0%{
-
+  
     }
     50%{
         transform: scale(1.5);
     }
     100%{
-        background-image: url(./star_yellow.png);
+        background-image: url(../images/star_yellow.png);
     }
-}
-
-/*****************/
-/***** main  *****/
-/*****************/
-main{
+  }
+  
+  /*****************/
+  /***** main  *****/
+  /*****************/
+  /* 메인 컨텐츠 전체 */
+  main {
+    position: relative;
+    top: 6.5rem;
     width: 100%;
+    padding: 0;
+    margin: 1rem 1rem;
+    background-color: #fff;
+  }
+  /* 메인 컨테이너 */
+  .main-container {
+    /* width: 100%; */
+    height: 60rem;
+    padding: 1rem;
+    /* 추후 border는 모두 삭제 예정(현재 구분용) */
+    border: 3px solid red;
+    margin: 1rem 1rem;
+    /* overflow: auto; */
+  }
+  /* 카테고리를 감싸는 큰 박스 */
+  .categ-container {
+    /* width: 100%; */
+    height: 7rem;
+    padding: 1rem 1rem;
+    border: 1px solid red;
+    margin: 1rem 1rem;
+    display: grid;
+    grid-template-columns: 17% 1fr 1fr 1fr 1fr 1fr;
+  }
+  /* 카테고리 타이틀 */
+  #categ-title {
+    position: relative;
+    float: left;
+    padding-right: 5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding-top: 2.5rem;
+  }
+  /* 카테고리 메뉴 */
+  .categ-menu {
+    float: left;
+    padding-right: 1rem;
+    margin: 0;
+    line-height: 2rem;
+  }
+  /* 카테고리 선택 글씨&이미지 박스 */
+  .thumbnail {
+    display: flex;
+    font-size: 1.3rem;
+    flex-direction: column;
+  }
+  /* 카테고리 세부선택 글 */
+  .categ-menu-sub {
+    font-size: inherit;
+  }
+  /* 카테고리 세부선택 이미지 */
+  .categ-menu-sub-img {
+    display: inline-block;
+    width: 5rem;
+    height: 5rem;
+    margin-left: 1rem;
+  }
+  /* 맛집랭킹 전체를 감싸는 큰 박스 */
+  .rank-container {
+    /* width: 100%; */
     height: 20rem;
-}
-/******************/
-/***** footer *****/
-/******************/
-/* logo-box */
-.footer-container{
+    padding: 1rem 1rem;
+    border: 1px solid red;
+    margin: 1rem 1rem;
+    display: grid;
+    grid-template-columns: 15% 1fr 1fr 1fr;
+    grid-gap: 1rem;
+  }
+  /* 맛집랭킹 타이틀 */
+  #rank-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  /* 맛집랭킹 순위 */
+  .rank-num {
+    display: inline-block;
+    padding: 1rem 1rem;
+  }
+  /* 베스트 리뷰 전체를 감싸는 큰 박스*/
+  .review-container {
+    /* width: 100%; */
+    height: 20rem;
+    padding: 1rem 1rem;
+    border: 1px solid red;
+    margin: 1rem 1rem;
+    display: grid;
+    grid-template-columns: 15% 1fr 1fr 1fr;
+    grid-gap: 1rem;
+  }
+  /* 베스트 리뷰 타이틀 */
+  #review-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  /* 베스트 리뷰 리스트 */
+  .review-num {
+    display: inline-block;
+    padding: 1rem 1rem;
+  }
+  
+  /******************/
+  /***** footer *****/
+  /******************/
+  /* logo-box */
+  .footer-container{
+    position: relative;
+    bottom: -6.5rem;
     width: 100%;
     padding-left: 2rem;
     color: #555;
-}
-.footer-logo-box>h1, .footer-logo-box>h2, .footer-logo-box>div{
+  }
+  .footer-logo-box>h1, .footer-logo-box>h2, .footer-logo-box>div{
     display: inline-block;
-}
-.footer-logo-img>img{
+  }
+  .footer-logo-img>img{
     width: 1rem;
-}
-.footer-menu-box{
+  }
+  .footer-menu-box{
     display: flex;
     justify-content: flex-start;
     flex-basis: content;
     list-style: none;
-}
-.footer-menu-item>a{
+  }
+  .footer-menu-item>a{
     padding-right: 0.5rem;
     margin-right: 0.5rem;
     border-right: 1px solid #555;
     color: #555;
-}
-
+  }
