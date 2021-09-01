@@ -5,34 +5,38 @@
 }
 /* 메인 컨텐츠 전체 */
 main {
+  width: 100%;
   padding: 0;
   margin: 1rem 1rem;
-  width: 100%;
   background-color: #fff;
 }
 /* 메인 컨테이너 */
 .main-container {
   width: 100%;
-  height: 30rem;
+  height: 60rem;
   padding: 1rem;
+  /* 추후 border는 모두 삭제 예정(현재 구분용) */
   border: 3px solid red;
-  margin-bottom: 1rem;
+  margin: 1rem 1rem;
 }
 /* 카테고리를 감싸는 큰 박스 */
 .categ-container {
   width: 100%;
-  height: 2rem;
-  padding: 0.5rem 1rem;
+  height: 5rem;
+  padding: 1rem 1rem;
   border: 1px solid red;
-  margin-bottom: 1rem;
+  margin: 1rem 1rem;
+  display: grid;
+  grid-template-columns: 20% 1fr 1fr 1fr 1fr 1fr;
 }
 /* 카테고리 타이틀 */
 #categ-title {
   position: relative;
   float: left;
-  padding-right: 3rem;
+  padding-right: 5rem;
   font-size: 1.5rem;
   font-weight: bold;
+  padding-top: 1.5rem;
 }
 /* 카테고리 메뉴 */
 .categ-menu {
@@ -44,10 +48,13 @@ main {
 /* 맛집랭킹 전체를 감싸는 큰 박스 */
 .rank-container {
   width: 100%;
-  height: 5rem;
-  padding: 1rem;
+  height: 20rem;
+  padding: 1rem 1rem;
   border: 1px solid red;
-  margin-bottom: 1rem;
+  margin: 1rem 1rem;
+  display: grid;
+  grid-template-columns: 15% 1fr 1fr 1fr;
+  grid-gap: 1rem;
 }
 /* 맛집랭킹 타이틀 */
 #rank-title {
@@ -62,10 +69,13 @@ main {
 /* 베스트 리뷰 전체를 감싸는 큰 박스*/
 .review-container {
   width: 100%;
-  height: 5rem;
-  padding: 1rem;
+  height: 20rem;
+  padding: 1rem 1rem;
   border: 1px solid red;
-  margin-bottom: 1rem;
+  margin: 1rem 1rem;
+  display: grid;
+  grid-template-columns: 15% 1fr 1fr 1fr;
+  grid-gap: 1rem;
 }
 /* 베스트 리뷰 타이틀 */
 #review-title {
@@ -75,5 +85,5 @@ main {
 /* 베스트 리뷰 리스트 */
 .review-num {
   display: inline-block;
-  margin: 0;
+  padding: 1rem 1rem;
 }
