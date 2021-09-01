@@ -25,7 +25,9 @@
   margin-left: auto;
   float: right;
 }
-
+ul {
+  list-style: none;
+}
 .restaurants-map {
   background-color: bisque;
   margin-right: 1.5rem;
