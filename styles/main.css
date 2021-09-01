@@ -171,7 +171,7 @@ header{
   /* 히스토리 컨텐츠 부분 */
 .restaurant-list{
   /* default로 숨겨둠 */
-  display: none;
+  /* display: none; */
   margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 0.5rem;
