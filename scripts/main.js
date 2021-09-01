@@ -20,20 +20,3 @@ function usrIconClick() {
   });
 }
 
-function clearAllButton() {}
-
-function recentTabClick() {
-  const recentTab = $(".recent-tab");
-  const historyWindow = $(".history-opened");
-  const blackedWindow = $(".blacked-window");
-
-  recentTab.mouseup(function () {
-    historyWindow.toggle();
-    blackedWindow.toggle();
-  });
-
-  blackedWindow.mouseup(function () {
-    historyWindow.toggle();
-    blackedWindow.toggle();
-  });
-}
