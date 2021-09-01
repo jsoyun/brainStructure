@@ -2,7 +2,6 @@ $(function () {
   usrIconClick();
 });
 
-
 function usrIconClick() {
   const button = $(".user-icon");
   const historyWindow = $(".history-opened");
@@ -13,7 +12,7 @@ function usrIconClick() {
     historyWindow.toggle();
     blackedWindow.toggle();
   });
-  
+
   // 검은 화면 클릭했을때 히스토리 창, 전체 검은 화면 끄기
   blackedWindow.mouseup(function () {
     historyWindow.toggle();
@@ -21,9 +20,7 @@ function usrIconClick() {
   });
 }
 
-function clearAllButton(){
-
-}
+function clearAllButton() {}
 
 function recentTabClick() {
   const recentTab = $(".recent-tab");
