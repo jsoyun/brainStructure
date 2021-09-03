@@ -1,146 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>검색페이지</title>
-    <link rel="stylesheet" href="/styles/main.css">
-    <link rel="stylesheet" href="/styles/search.css" />  
-    <link rel="stylesheet" href="/styles/map custom.css" />
 
-    
-  </head>
-  <body>
-    <!-- 메인페이지 동일 석훈코딩가져옴 -->
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>검색페이지</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="/styles/header.css">
+  <link rel="stylesheet" href="/styles/search.css" />
+  <link rel="stylesheet" href="/styles/map custom.css" />
 
-    
-    <header>
-      <!-- 헤더 컨테이너 -->
-      <div class="header_container">
-          <!-- 홈 타이틀 박스 -->
-          <div class="title-box">
-              <!-- 메인페이지로 가는 버튼 -->
-              <a href="#" id="btn-main">
-                  <h1>CHILI PEPPER</h1>
-                  <h2>칠리 페퍼</h2>
-              </a>
-              <div class="logo-img"><img src="/images/chili.png" alt=""></div>
-          </div>
-          <div class="empty"></div>
-          <!-- 검색창 박스 -->
-          <div class="search-box">
-              <input id="search-text"> <span>검색</span> </input>
-          </div>
-          <div class="empty"></div>
-          <!-- 메뉴 박스 -->
-          <div class="menu-box">
-              <div class="login-box">
-                  <a href="#" id="btn-login"><h2>로그인</h2></a>
-              </div>
-              <div class="menu-box">
-                  <div class="menu-review"></div>
-              </div>
-          </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+  <script src="http://developer.kakao.com/sdk/js/kakao.js"></script>
+
+
+</head>
+
+<body>
+  <!-- 석훈 추가 내용 -->
+  <!-- top menu -->
+  <header>
+    <!-- 헤더 컨테이너 -->
+    <div class="header_container">
+      <!-- 홈 타이틀 박스 -->
+      <div class="title-box">
+        <!-- 메인페이지로 가는 버튼 -->
+        <a href="http://127.0.0.1:5500/main.html" id="btn-main">
+          <h1>CHILI PEPPER</h1>
+          <h2>칠리 페퍼</h2>
+        </a>
+        <div class="logo-img"><img src="./images/chili.png" alt=""></div>
       </div>
+      <div class="empty"></div>
+      <!-- 검색창 박스 -->
+      <div class="search-box">
+        <input id="search-text" placeholder="지역, 식당 또는 음식"> <span>검색</span> </input>
+      </div>
+      <div class="empty"></div>
+      <!-- 상단메뉴 컨테이너 -->
+      <div class="menu-container">
+        <!-- 유저 아이콘 / 프로필 사진 -->
+        <div id="btn-icon">
+          <div class="not-login-display" id="user-icon"></div>
+          <div id="user-profile-btn">
+            <img class="login-display" src="" id="user-profile">
+          </div>
+        </div>
+        <!-- 혹시나 추가할 메뉴 넣을 공간 -->
+        <div id="menu-box">
+          <div id="menu-review"></div>
+        </div>
+      </div>
+    </div>
   </header>
 
-    <main>
-      <!-- 메인 전체컨테이너 -->
-      <div class="main-container-SY">
-        <!-- 필터 -->
-        <div>
-          <div class="search-option">          
-           <ul>
-             <!-- <a href=""><li id="btn-filter">평점순</li></a><span> -->
-             <a href=""><li id="btn-filter">매운맛순</li></a></span>
-           </ul>
-         </div>
-
-          <!--  식당 리스트 -->
-         <div class="search-list-restaurants">
-         <img src="/확인차/images/떡볶이 이미지.jpg" alt="맛집사진" class="list-restaurants-image">
-         <div class="list-restaurants-title">
-           <div class="list-restaurants-location"></div>
-         </div>
-
-         </div>
+  <!-- 드롭다운 창 -->
+  <div class="history-opened">
+    <!-- 다른 창 비활성화 -->
+    <div class="blacked-window"></div>
+    <!-- 최근 검색, 찜목록 창 -->
+    <div class="history-container">
+      <!-- 탭 리스트 -->
+      <ul class="tab-list">
+        <li class="tab-item recent-tab">
+          <button id="recent-tab-btn">
+            최근 본 맛집
+            <span class="recent-count"></span>
+          </button>
+        </li>
+        <li class="tab-item wannaGo-tab">
+          <button id="wannaGo-tab-btn">찜 목록</button>
+        </li>
+      </ul>
+      <!-- 히스토리 컨텐츠 -->
+      <div class="history-contents-container">
+        <!-- 검색목록 다 없애기 -->
+        <div class="history-contents-header">
+          <button class="clear-btn">x clear all</button>
         </div>
-        
-        
-        <!-- 지도 추가 -->      
-        <div class="map_wrap">
-          <div
-            id="map"
-            style="
+        <!-- 식당 정보 템플릿 -->
+        <ul class="restaurant-list">
+          <li class="restaurant-item">
+            <section class="restaurant-item-detail">
+              <a href="" class="restaurant-img-wrap">
+                <div class="restaurant-img">식당사진</div>
+              </a>
+              <div class="restaurant-info-box">
+                <a href="" class="restaurant-name-wrap">
+                  <h3 class="restaurant-name">식당이름</h3>
+                  <span class="restaurant-rating">5</span>
+                </a>
+                <span class="restaurant-desc">내용설명</span>
+              </div>
+
+              <button class="wannaGo-btn"></button>
+            </section>
+          </li>
+        </ul>
+        <!-- 검색목록 없을 때 화면 -->
+        <div id="history-contents-emptyView">
+          <span id="recent-empty-text">최근 검색이 없습니다.</span>
+        </div>
+        <div id="history-contents-emptyWannaGo">
+          <span id="wannaGo-empty-text">찜한 목록이 없습니다.</span>
+        </div>
+      </div>
+      <!-- 로그인 및 내정보 버튼 -->
+      <footer class="history-footer">
+        <div class="not-login-display" id="login-btn">로그인</div>
+        <div class="login-display" id="logout-btn" onclick="logoutKakao()">로그아웃</div>
+      </footer>
+    </div>
+  </div>
+
+  <!-- 로그인 팝업 창 -->
+  <aside class="login-popup-window">
+    <div class="login-popup-container">
+      <button id="login-popup-close-btn">X</button>
+      <h2 id="login-popup-title">로그인</h2>
+      <p id="login-popup-text">로그인 해서 <br> 나만의 찜 목록을 만들어보세요!</p>
+      <ul class="login-popup-btn-list">
+        <li id="login-popup-btn-item">
+          <a href="javascript:loginWithKakao()" id="login-popup-btn-kakao"></a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <main>
+    <!-- 메인 전체컨테이너 -->
+    <div class="main-container-SY">
+      <!-- 필터 -->
+      <div>
+        <div class="search-option">
+          <ul>
+            <!-- <a href=""><li id="btn-filter">평점순</li></a><span> -->
+            <a href="">
+              <li id="btn-filter">매운맛순</li>
+            </a></span>
+          </ul>
+        </div>
+
+        <!--  식당 리스트 -->
+        <div class="search-list-restaurants">
+          <img src="/확인차/images/떡볶이 이미지.jpg" alt="맛집사진" class="list-restaurants-image">
+          <div class="list-restaurants-title">
+            <div class="list-restaurants-location"></div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- 지도 추가 -->
+      <div class="map_wrap">
+        <div id="map" style="
               width: 95%;
               height: 800px;
               position: relative;
               overflow: hidden;
-            " ></div>
-    
-          <div id="menu_wrap" class="bg_white">
-            <div class="option">
-              <div>
-                <form onsubmit="searchPlaces(); return false;">
-                  키워드 :
-                  <input type="text" value="천호역 맛집" id="keyword" size="15" />
-                  <button type="submit">검색</button>
-                </form>
-              </div>
+            "></div>
+
+        <div id="menu_wrap" class="bg_white">
+          <div class="option">
+            <div>
+              <form onsubmit="searchPlaces(); return false;">
+                키워드 :
+                <input type="text" value="천호역 맛집" id="keyword" size="15" />
+                <button type="submit">검색</button>
+              </form>
             </div>
-            <hr />
-            <ul id="placesList"></ul>
-            <div id="pagination"></div>
           </div>
+          <hr />
+          <ul id="placesList"></ul>
+          <div id="pagination"></div>
         </div>
-    
-        <script
-          type="text/javascript"
-          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c3220d7231781974bb6685aba3df2ed5&libraries=services"
-        ></script>
-        <script src="/scripts/search.js">       
-        </script>
-        
-        
       </div>
-        
-      
+
+      <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c3220d7231781974bb6685aba3df2ed5&libraries=services"></script>
+      <script src="/scripts/search.js">
+      </script>
 
 
-      </div>
-   
-    </main>
+    </div>
 
-    <!-- 메인페이지 동일 -->
-    <footer>
-      <div class="footer-container">
-          <div class="footer-logo-box">
-              <h1>CHILI PEPPER</h1>
-              <div class="footer-logo-img"><img src="/images/chili_footer_logo.png" alt=""></div>
-              <h2>칠리 페퍼</h2>
-          </div>
-          <div class="footer-menu-box">
-              <div class="footer-menu-item"><a href="#">회사 소개</a></div>
-              <div class="footer-menu-item"><a href="#">서비스 소개</a></div>
-              <div class="footer-menu-item"><a href="#">광고 문의</a></div>
-              <div class="footer-menu-item"><a href="#">제휴카드</a></div>
-              <div class="footer-menu-item"><a href="#">개인정보취급방침</a></div>
-              <div class="footer-menu-item"><a href="#">이용약관</a></div>
-              <div class="footer-menu-item"><a href="#">도움말</a></div>
-              <div class="footer-menu-item"><a href="#">공지사항</a></div>
-          </div>
-          <div class="company-info">
-              <p>
-                  대표자 <strong>이성재</strong> <strong>이민주</strong> <strong>이소윤</strong> <strong>윤석훈</strong> <br>
-                  email: chili.pepper.co@gmail.com <br>
-                  tel: 00-0000-0000
-              </p>
-          </div>
+
+
+
+    </div>
+
+  </main>
+
+  <!-- 메인페이지 동일 -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-logo-box">
+        <h1>CHILI PEPPER</h1>
+        <div class="footer-logo-img"><img src="/images/chili_footer_logo.png" alt=""></div>
+        <h2>칠리 페퍼</h2>
       </div>
-    </footer>
-    
-   
-    
-  </body>
+      <div class="footer-menu-box">
+        <div class="footer-menu-item"><a href="#">회사 소개</a></div>
+        <div class="footer-menu-item"><a href="#">서비스 소개</a></div>
+        <div class="footer-menu-item"><a href="#">광고 문의</a></div>
+        <div class="footer-menu-item"><a href="#">제휴카드</a></div>
+        <div class="footer-menu-item"><a href="#">개인정보취급방침</a></div>
+        <div class="footer-menu-item"><a href="#">이용약관</a></div>
+        <div class="footer-menu-item"><a href="#">도움말</a></div>
+        <div class="footer-menu-item"><a href="#">공지사항</a></div>
+      </div>
+      <div class="company-info">
+        <p>
+          대표자 <strong>이성재</strong> <strong>이민주</strong> <strong>이소윤</strong> <strong>윤석훈</strong> <br>
+          email: chili.pepper.co@gmail.com <br>
+          tel: 00-0000-0000
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="./scripts/header.js"></script>
+
+</body>
+
 </html>
