@@ -89,18 +89,32 @@ header{
   line-height: 3rem;
   margin: 0;
 }
-/* 히스토리로 가는 버튼 */
-#btn-icon{
-  
-}
-.user-icon{
+/* 드롭다운 창으로 가는 버튼 */
+#user-icon{
   border: none;
   background-color: transparent;
   width: 2rem;
   height: 2rem;
   background-image: url(../images/user.png);
   background-size: cover;
+  margin: auto;
 }
+#user-profile{
+  display: none;
+}
+#user-icon:hover, #user-profile-btn:hover{
+  cursor: pointer;
+}
+
+#user-profile{
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid red;
+  border-radius: 50%;
+  margin: auto;
+  display: none;
+}
+
 /**********************/
 /***** 드롭다운 창 *****/
 /**********************/
@@ -110,6 +124,8 @@ header{
 
 .blacked-window{
   position: fixed;
+  top: 0%;
+  
   background-color: rgba(0,0,0,0.6);
   width: 100%;
   height: 100%;
@@ -141,19 +157,28 @@ header{
   justify-content:center;
 }
 .tab-item>button:hover{
-  border-bottom: 2px solid red;
+  font-weight:bolder;
   cursor: pointer;
 }
 .tab-item>button{
   display: inline-block;
   width: 10rem;
   border: none;
-  border-bottom: 1px solid #555;
+  border-bottom: 1px solid #888;
   background-color: #fff;
-  color: #555;
+  color: #333;
   line-height: 3rem;
   text-align: center;
   font-size: 1rem;
+}
+#history-contents-emptyView, #history-contents-emptyWannaGo{
+  position: relative;
+  top: 10rem;
+  text-align: center;
+  align-items: center;
+}
+#history-contents-emptyWannaGo{
+  display: none;
 }
 .history-contents-container{
   height: 26rem;
@@ -171,7 +196,7 @@ header{
   /* 히스토리 컨텐츠 부분 */
 .restaurant-list{
   /* default로 숨겨둠 */
-  /* display: none; */
+  display: none;
   margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 0.5rem;
@@ -218,6 +243,7 @@ header{
   height: 2rem;
   bottom: 0;
   padding: 0.5rem 1rem;
+  border-top: 1px solid #888;
   text-align: center;
 }
 .history-footer>button{
@@ -225,34 +251,82 @@ header{
   background-color: transparent;
   line-height: 2rem;;
 }
-.history-footer>.login-btn{
+.history-footer>#login-btn{
   text-align: center;
+  margin: auto;
+  padding: 0.2rem;
   width: 13rem;
   border: 2px solid red;
   border-radius: 30px;
-  /* display: none; */
 }
-.history-footer>.profile-btn{
+.history-footer>#logout-btn{
   /* default로 숨겨둠 */
   float: right;
   display: none;
 }
+#login-btn:hover, #logout-btn:hover{
+  cursor: pointer;
+}
 
 /* 클릭 효과, js에서 바꾸기 */
-.wannaGo-btn:active{
-  animation: wannaGoClickEffect 0.4s ease-out;
-  animation-iteration-count: 1;
+.wannaGo-btn:hover{
+  animation: wannaGoClickEffect 1.7s ease-in-out;
+  animation-iteration-count:infinite;
 }
 @keyframes wannaGoClickEffect {
-  0%{
-
-  }
   50%{
-      transform: scale(1.5);
-  }
-  100%{
+    transform: scale(1.1);
       background-image: url(../images/star_yellow.png);
   }
+}
+
+/******************************/
+/***** login popup window *****/
+/******************************/
+.login-popup-window{
+  z-index: 1300;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;  
+  background-color: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+}
+.login-popup-container{
+  margin: auto;
+  top: 25%;
+  position: relative;
+  background-color: #fff;
+  width: 16rem;
+  height: 18.5rem;
+  padding: 7rem 3rem;
+  text-align: center;
+  border-radius: 30px;
+}
+#login-popup-close-btn{
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+#login-popup-title{
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+#login-popup-text{
+  margin-bottom: 3rem;
+  font-size: 1rem;
+}
+#login-popup-btn-kakao{
+  display: inline-block;
+  width: 183px;
+  height: 45px;
+  background-image: url(../images/kakao_login_medium_narrow.png);
+  background-size: cover;
+  border-radius: 30px;
 }
 
 /*****************/
@@ -260,14 +334,16 @@ header{
 /*****************/
 /* 메인 컨텐츠 전체 */
 main {
+  /* width: 100%; */
+  padding: 0;
   position: relative;
   top: 5rem;
-  padding: 0;
   margin: 1rem 1rem;
   background-color: #fff;
 }
 /* 메인 컨테이너 */
 .main-container {
+  /* width: 100%; */
   height: 60rem;
   padding: 1rem;
   /* 추후 border는 모두 삭제 예정(현재 구분용) */
@@ -277,6 +353,7 @@ main {
 }
 /* 카테고리를 감싸는 큰 박스 */
 .categ-container {
+  /* width: 100%; */
   height: 7rem;
   padding: 1rem 1rem;
   border: 1px solid red;
@@ -317,8 +394,9 @@ main {
   height: 5rem;
   margin-left: 1rem;
 }
-/* 맛집랭킹 전체를 감싸는 큰 박스 */
+/* 오늘의추천 전체를 감싸는 큰 박스 */
 .rank-container {
+  /* width: 100%; */
   height: 20rem;
   padding: 1rem 1rem;
   border: 1px solid red;
@@ -327,18 +405,19 @@ main {
   grid-template-columns: 15% 1fr 1fr 1fr;
   grid-gap: 1rem;
 }
-/* 맛집랭킹 타이틀 */
+/* 오늘의추천 타이틀 */
 #rank-title {
   font-size: 1.5rem;
   font-weight: bold;
 }
-/* 맛집랭킹 순위 */
+/* 오늘의추천 순위 */
 .rank-num {
   display: inline-block;
   padding: 1rem 1rem;
 }
 /* 베스트 리뷰 전체를 감싸는 큰 박스*/
 .review-container {
+  /* width: 100%; */
   height: 20rem;
   padding: 1rem 1rem;
   border: 1px solid red;
