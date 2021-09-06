@@ -48,14 +48,22 @@ function searchHeader() {
     console.log(getCookie("searchKeyword"));
     mapSearchAutoFilled(getCookie("searchKeyword"));
     searchPlaces();
+    removeList("res-list");
     search(getCookie("searchKeyword"));
-    // console.log(itemList);
-    // const itemList = document.getElementsByClassName("res-list");
-    // console.log(itemList);
-    // itemList.remove();
   });
 }
 
+// 클론 리스트 지우기 함수
+function removeList(className){
+  const itemList = document.getElementsByClassName(className);
+  const repeatNum = itemList.length;
+  for (let i = 0; i < repeatNum; i++) {
+    itemList[0].remove();
+  }
+}
+href = `https://map.kakao.com/?q=${res name}`
+
+// 상단 메뉴 바 위치에 따라 변경
 function scrollBar(){
   $(window).scroll(function () {
     // scrollTop: 현재 브라우저의 창의 스크롤값을 구해줌
