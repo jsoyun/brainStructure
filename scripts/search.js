@@ -10,49 +10,6 @@ var mapContainer = document.getElementById("map"), // 지도를 표시할 div
 // 지도를 생성합니다
 var map = new kakao.maps.Map(mapContainer, mapOption);
 
-///////////////////////////////////////////////
-////여기까지 지도표시인듯!///////////////////////밑에가 마커값////////////
-// var imageSrc = "https://cdn-icons-png.flaticon.com/512/2533/2533563.png", // 마커이미지의 주소입니다
-//   imageSize = new kakao.maps.Size(34, 39), // 마커이미지의 크기입니다
-//   imageOption = { offset: new kakao.maps.Point(27, 69) }; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
-
-// // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-// var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption),
-//   markerPosition = new kakao.maps.LatLng(
-//     37.540005298816624,
-//     127.12334985085471
-//   ); // 마커가 표시될 위치입니다
-
-// // 마커를 생성합니다
-// var marker = new kakao.maps.Marker({
-//   position: markerPosition,
-//   image: markerImage, // 마커이미지 설정
-// });
-
-// // 마커가 지도 위에 표시되도록 설정합니다
-// marker.setMap(map);
-
-// // 커스텀 오버레이에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-// var content =
-//   '<div class="customoverlay">' +
-//   '  <a href="https://place.map.kakao.com/1835218933" target="_blank">' +
-//   '    <span class="title">가마솥 순대국밥</span>' +
-//   "  </a>" +
-//   "</div>";
-
-// // 커스텀 오버레이가 표시될 위치입니다
-// var position = new kakao.maps.LatLng(37.540005298816624, 127.12334985085471);
-
-// // 커스텀 오버레이를 생성합니다
-// var customOverlay = new kakao.maps.CustomOverlay({
-//   map: map,
-//   position: position,
-//   content: content,
-//   yAnchor: 1,
-// });
-
-///////////////////.////////////////////////////////////////////////////
-
 ////////////////////////////////////////////////////////
 
 // 장소 검색 객체를 생성합니다
@@ -280,10 +237,6 @@ var positions = [
     latlng: new kakao.maps.LatLng(37.5371311, 127.123568),
   },
 ];
-
-// positions[0].latlng;
-// document.write;
-
 ////////////////////////////가운데 배열링크넣어보려는중.
 
 // 마커 이미지의 이미지 주소입니다
@@ -378,3 +331,56 @@ var customOverlay = new kakao.maps.CustomOverlay({
   content: content,
   yAnchor: 1,
 });
+//////////////////////////////////맛집 리스트///////
+
+// 식당 API
+const API_URL =
+  "http://openapi.gd.go.kr:8088/44777756477465733936475267654e/json/GdModelRestaurantDesignate/1/1000/";
+
+const $list = $(".classList");
+
+//클릭버튼
+$(function () {
+  $(".btn-search").click(function () {
+    let searchKeyword = $("#search-text").val();
+
+    search(searchKeyword);
+  });
+});
+//서치함수
+function search(searchKeyword) {
+  $.get(API_URL, { searchKeyword: searchKeyword }, function (data) {
+    //list로 데이터의 구체적 배열, 할당해줌
+    let list = data.GdModelRestaurantDesignate.row;
+
+    //list 배열 반복되는 거 item에 들어감
+    for (let i = 0; i < list.length; i++) {
+      let item = list[i];
+      //그 item의 보여줄정보(배열이름임)를 간단히 이름 붙여줌
+      let name = item.UPSO_NM;
+      let menu = item.MAIN_EDF;
+      let addr = item.SITE_ADDR_RD;
+      let category = item.SNT_UPTAE_NM;
+
+      //걔네들을 contents배열로 만들어줌
+
+      let contents = [name, menu, addr, category];
+      // contents배열을 for문 돌림
+      for (let X = 0; X < contents.length; X++) {
+        //만약에 contents배열이 서치키워드 포함하면
+
+        if (contents[X].includes(searchKeyword)) {
+          //#item-template을 복사하겠다? id는 제거하고? 여기 정확히는 모르겠음
+          let $elem = $("#item-template").clone().removeAttr("id");
+          // $elem.find('.item-no').html(i + 1);
+          $elem.find(".item-name").html(item.UPSO_NM);
+          $elem.find(".item-menu").html(item.MAIN_EDF);
+          $elem.find(".item-addr").html(item.SITE_ADDR_RD);
+          $elem.find(".item-category").html(item.SNT_UPTAE_NM);
+          //보여주겠다
+          $list.append($elem);
+        }
+      }
+    }
+  });
+}

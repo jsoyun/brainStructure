@@ -9,11 +9,18 @@
   <link rel="stylesheet" href="/styles/main.css">
   <link rel="stylesheet" href="/styles/header.css">
   <link rel="stylesheet" href="/styles/search.css" />
-  <link rel="stylesheet" href="/styles/map custom.css" />
-
+  <link rel="stylesheet" href="/styles/search_map custom.css" />
+  <link rel="stylesheet" href="styles/search_list.css">
+<!-- 카카오지도API -->
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous"></script>
   <script src="http://developer.kakao.com/sdk/js/kakao.js"></script>
+<!-- 식당API -->
+  <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"
+></script>
 
 
 </head>
@@ -36,7 +43,7 @@
       <div class="empty"></div>
       <!-- 검색창 박스 -->
       <div class="search-box">
-        <input id="search-text" placeholder="지역, 식당 또는 음식"> <span>검색</span> </input>
+        <input id="search-text" placeholder="지역, 식당 또는 음식"> <button class="btn-search"><span>검색</span></button> </input>
       </div>
       <div class="empty"></div>
       <!-- 상단메뉴 컨테이너 -->
@@ -54,7 +61,7 @@
         </div>
       </div>
     </div>
-  </header>
+ </header>
 
   <!-- 드롭다운 창 -->
   <div class="history-opened">
@@ -138,17 +145,28 @@
           <ul>
             <!-- <a href=""><li id="btn-filter">평점순</li></a><span> -->
             <a href="">
-              <li id="btn-filter">매운맛순</li>
+              <li id="btn-filter">재검색</li>
             </a></span>
           </ul>
         </div>
 
         <!--  식당 리스트 -->
         <div class="search-list-restaurants">
-          <img src="/확인차/images/떡볶이 이미지.jpg" alt="맛집사진" class="list-restaurants-image">
-          <div class="list-restaurants-title">
-            <div class="list-restaurants-location"></div>
+          <div class="body">
+            <!-- <div class="total"></div> -->
+            <div class="classList"></div>
+        </div>
+
+        <div id="item-template" class="item">
+          <!-- <div class="item-no"></div> -->
+          <div class="item-detail">
+              <div class="item-name"></div>
+              <div class="item-menu"></div>
+              <div class="item-addr"></div>
+              <div class="item-category"></div>
           </div>
+      </div>
+
 
         </div>
       </div>
