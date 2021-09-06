@@ -118,31 +118,3 @@ main {
   padding: 1rem 1rem;
 }
 
-/******************/
-/***** footer *****/
-/******************/
-/* logo-box */
-.footer-container{
-  position: relative;
-  padding-left: 1rem;
-  padding-bottom: 2rem;
-  color: #555;
-}
-.footer-logo-box>h1, .footer-logo-box>h2, .footer-logo-box>div{
-  display: inline-block;
-}
-.footer-logo-img>img{
-  width: 1rem;
-}
-.footer-menu-box{
-  display: flex;
-  justify-content: flex-start;
-  flex-basis: content;
-  list-style: none;
-}
-.footer-menu-item>a{
-  padding-right: 0.5rem;
-  margin-right: 0.5rem;
-  border-right: 1px solid #555;
-  color: #555;
-}

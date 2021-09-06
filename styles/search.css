@@ -12,13 +12,14 @@
 }
 /* 필터 */
 .search-option {
-  background-color: orange;
+  background-color: #fff;
   height: 2rem;
   margin-left: 1rem;
 }
 #btn-filter {
   font-size: 15px;
-  color: white;
+  color: orange;
+  font-weight: bold;
   /* border: solid 0.1rem black; */
   padding: 0.3rem;
   margin-right: 1rem;
@@ -40,7 +41,7 @@ ul {
   /* height: 768px; */
   margin-left: 1rem;
 
-  background-color: brown;
+  background-color: #fff;
 }
 /* 지도 */
 .map_wrap,

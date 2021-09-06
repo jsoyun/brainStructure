@@ -1,3 +1,11 @@
+#map{
+  margin-top: 2rem;
+  width: 95%;
+  height: 50rem;
+  position: relative;
+  overflow: hidden;
+}
+
 .customoverlay {
   position: relative;
   bottom: 85px;
@@ -19,8 +27,7 @@
   font-size: 14px;
   font-weight: bold;
   overflow: hidden;
-  background: #d95050;
-  background: #d95050
+  background: orange
     url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png)
     no-repeat right 14px center;
 }

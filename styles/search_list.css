@@ -15,30 +15,18 @@
   background-color: #fff;
   cursor: pointer;
 }
-.total {
-  margin: 20px 10px 8px;
-  font-size: 13px;
-  color: crimson;
+.classList{
+  height: 50rem;
+  overflow-y: scroll;
 }
 #item-template {
   display: none;
 }
 .item {
   padding: 10px 20px;
-
   margin-bottom: 10px;
-
-  background-color: #fff;
+  border-bottom: 3px solid orange;
 }
-/* .item-no {
-  display: inline-block;
-  padding-left: 10px;
-  padding-right: 10px;
-  font-size: 30px;
-  color: brown;
-  vertical-align: middle;
-  min-width: 15px;
-} */
 .item-detail {
   display: inline-block;
   margin-left: 10px;
