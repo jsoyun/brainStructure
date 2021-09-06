@@ -2,8 +2,18 @@ $(function(){
   // 키워드로 장소를 검색합니다
   mapSearch(getCookie("searchKeyword"));
   searchPlaces();
+  researchClick();
 })
 
+function researchClick(){
+  const researchBtn=document.getElementById("research-btn");
+  researchBtn.addEventListener("click",()=>{
+    // 키워드 쿠키 삭제
+    setCookie("searchKeyword", "");
+  });
+}
+
+// 지도에 키워드 자동 입력
 function mapSearch(keyword){
   const mapKeyword = document.getElementById("keyword");
   mapKeyword.value = "천호역 " + keyword;
