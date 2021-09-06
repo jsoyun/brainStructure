@@ -20,14 +20,14 @@ main {
 /* 리뷰게시판 네비게이션 틀 */
 .floating-menu {
   font-size: 1rem;
-  background: #eee8dd;
+  background: #fff;
   border-radius: 10px;
   padding: 5px;
   width: auto;
   z-index: 100;
   position: fixed;
   right: 20px;
-  bottom: 30px;
+  bottom: 50px;
 }
 /* 리뷰게시판 네비게이션 이미지 */
 .toktok{
