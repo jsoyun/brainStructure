@@ -5,23 +5,63 @@ const WANNAGO = "WANNAGO";
 const LOGINED = "LOGINED";
 const NOTLOGINED = "NOTLOGINED";
 
-
 let contentsEmptyStatus = EMPTY;
 let historyWindowStatus = RECENT;
-let loginStatus = NOTLOGINED;
 
 $(function () {
-  usrIconClick();
+  // setCookie('loginStatus', getCookie('loginStatus'));
+  // console.log(getCookie('loginStatus'));
+  scrollBar();
+  usrIcon();
+  userIconDisplay(getCookie("profile_image"));
   tabClick();
   loginPopupCloseBtnClick();
   loginBtnClick();
+  Search();
 });
+
+/***************** 검색 버튼 **********************/
+// 클릭 + 엔터 누르면 쿠키에 검색어 저장
+function Search() {
+  const searchKeyword = document.getElementById("search-text");
+  const searchBtn = document.getElementById("search-btn");
+  // 엔터를 쳤을때 searchBtn.click 이벤트를 활성화
+  searchKeyword.addEventListener("keyup", function (event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      searchBtn.click();
+    }
+  });
+  // 버튼을 눌렀을때 검색어 쿠키에 저장
+  searchBtn.addEventListener("click", () => {
+    setCookie("searchKeyword", searchKeyword.value);
+    console.log(getCookie("searchKeyword"));
+    // 현재 창에서 검색창으로 연결
+    // searchBtn.href="search.html";
+    // 새탭에서 검색창으로 연결
+    // window.open("search.html", "_blank");
+  });
+}
+function scrollBar(){
+  $(window).scroll(function () {
+    // scrollTop: 현재 브라우저의 창의 스크롤값을 구해줌
+    let top = $(window).scrollTop();
+    if (top > 160) {
+      $("#header").addClass("inverted");
+    } else {
+      $("#header").removeClass("inverted");
+    }
+  });
+}
 
 /***************** 유저 아이콘 **********************/
 // 상단 유저 아이콘/프로필 클릭했을 때 동작 함수
-function usrIconClick() {
+function usrIcon() {
   const button = $("#user-icon");
-  const profile = $('#user-profile-btn')
+  const profile = $("#user-profile-btn");
   const blackedWindow = $(".blacked-window");
   emptyScreen();
   tabStyle();
@@ -69,9 +109,9 @@ function tabClick() {
     historyWindowStatus = WANNAGO;
     // console.log(historyWindowStatus);
     // console.log(loginStatus);
-    if(loginStatus==NOTLOGINED){
+    if (getCookie("loginStatus") == NOTLOGINED) {
       loginPopupWindowOpen();
-    } else{
+    } else {
       emptyScreen();
       tabStyle();
     }
@@ -83,12 +123,12 @@ function tabStyle() {
   const wannaGo = document.getElementById("wannaGo-tab-btn");
   switch (historyWindowStatus) {
     case RECENT:
-      recent.style.borderBottom = "solid red 2px";
-      wannaGo.style.borderBottom = "solid #888 1px";
+      recent.style.borderBottom = "solid orange 2px";
+      wannaGo.style.borderBottom = "solid #dbdbdb 1px";
       break;
     case WANNAGO:
-      recent.style.borderBottom = "solid #888 1px";
-      wannaGo.style.borderBottom = "solid red 2px";
+      recent.style.borderBottom = "solid #dbdbdb 1px";
+      wannaGo.style.borderBottom = "solid orange 2px";
       break;
   }
 }
@@ -99,8 +139,10 @@ function emptyScreen() {
   const rsListElem = document.getElementsByClassName("restaurant-list");
   // rsListElem[0].style.display='none';
 
+  // 컨텐츠 내용의 유무에 따라 화면 바꾸기
   switch (contentsEmptyStatus) {
     case EMPTY:
+      // 탭 클릭 상태에 따라 보이는 화면 바꾸기
       switch (historyWindowStatus) {
         case RECENT:
           // rsListElem.toggle();
@@ -135,7 +177,7 @@ function loginBtnClick() {
 }
 
 // 로그인 팝업창 띄우기 함수
-function loginPopupWindowOpen(){
+function loginPopupWindowOpen() {
   const loginPopupWindow =
     document.getElementsByClassName("login-popup-window");
   loginPopupWindow[0].style.display = "block";
@@ -144,50 +186,60 @@ function loginPopupWindowOpen(){
 /****************************************/
 
 /************* 로그인 팝업창 *************/
-// 로그인 윈도우 
-function loginWindow(loginData) {
-  const id = loginData.id;
-  const kakao_account = loginData.kakao_account;
-  const properties = loginData.properties;
-  const userIcon = document.getElementById("user-icon");
+// 로그인 윈도우
+function loginWindow() {
   const userProfile = document.getElementById("user-profile");
-  
-  loginDisp();
-  
-  // 로그인 시 프사가 나오게 함
-  userProfile.src = properties.profile_image;
+  userProfile.src = getCookie("profile_image");
 
+  // 로그인 상태 화면 보이게 하기
+  loginWindowDisp();
   // 로그인하자마자 로그인 팝업창 종료
   loginPopupClose();
 }
 
+function userIconDisplay(image) {
+  let loginStatus = getCookie("loginStatus");
+  switch (loginStatus) {
+    case LOGINED:
+      loginWindowDisp();
+      const userProfile = document.getElementById("user-profile");
+      userProfile.src = image;
+      return;
+    case NOTLOGINED:
+      const userIcon=document.getElementById("user-icon");
+      userIcon.style.display = "block";
+      notLoginWindowDisp();
+      return;
+  }
+}
+
 // 로그인 상태에서 보이는 화면
-function loginDisp(){
-  const loginDispElem = document.getElementsByClassName('login-display');
-  const notLoginDispElem = document.getElementsByClassName('not-login-display');
+function loginWindowDisp() {
+  const loginDispElem = document.getElementsByClassName("login-display");
+  const notLoginDispElem = document.getElementsByClassName("not-login-display");
 
   // 로그인 했을때 보여야하는 요소들 다 켜기
   for (let i = 0; i < loginDispElem.length; i++) {
-    loginDispElem[i].style.display='block'
+    loginDispElem[i].style.display = "block";
   }
   // 로그인 했을때 보이면 안되는 요소들 다 끄기
   for (let i = 0; i < notLoginDispElem.length; i++) {
-    notLoginDispElem[i].style.display='none'
+    notLoginDispElem[i].style.display = "none";
   }
 }
 
 // 로그인 안한 상태에서 보이는 화면
-function notLoginDisp(){
-  const loginDispElem = document.getElementsByClassName('login-display');
-  const notLoginDispElem = document.getElementsByClassName('not-login-display');
+function notLoginWindowDisp() {
+  const loginDispElem = document.getElementsByClassName("login-display");
+  const notLoginDispElem = document.getElementsByClassName("not-login-display");
 
   // 로그인 했을때 보여야하는 요소들 다 끄기
   for (let i = 0; i < loginDispElem.length; i++) {
-    loginDispElem[i].style.display='none'
+    loginDispElem[i].style.display = "none";
   }
   // 로그인 했을때 보이면 안되는 요소들 다 켜기
   for (let i = 0; i < notLoginDispElem.length; i++) {
-    notLoginDispElem[i].style.display='block'
+    notLoginDispElem[i].style.display = "block";
   }
 }
 
@@ -199,30 +251,35 @@ function loginPopupCloseBtnClick() {
   });
 }
 // 로그인 팝업 꺼지는 함수
-function loginPopupClose(){
-  const loginPopupWindow = document.getElementsByClassName("login-popup-window");
+function loginPopupClose() {
+  const loginPopupWindow =
+    document.getElementsByClassName("login-popup-window");
   loginPopupWindow[0].style.display = "none";
 }
 
 /* 카카오 로그인 팝업창*/
 // 카카오 API key 등록
 Kakao.init("586fe3f43cb0194d025ad9df81b4de7a");
-// 카카오 로그인 버튼 눌렀을때 카카오 로그인 팝업창 띄우기 
+// 카카오 로그인 버튼 눌렀을때 카카오 로그인 팝업창 띄우기
 // a태그 href로 이 함수 불러옴
 function loginWithKakao() {
   Kakao.Auth.login({
     // 로그인시 동의항목들 설정 --> kakao develper 사이트에서 설정해줘야함
     // 받을 데이터들 설정
-    scope: 'profile_nickname, profile_image, account_email, gender',
+    scope: "profile_nickname, profile_image, account_email, gender",
     // 카카오로 로그인 성공했을때 아래 함수 실행
     success: function (authObj) {
-      loginStatus = LOGINED;
       // 카카오 API로 로그인 정보 불러오기
       Kakao.API.request({
         url: "/v2/user/me",
         // 성공했을때 아래 함수 실행
         success: (loginData) => {
-          loginWindow(loginData);
+          const profileImage=loginData.properties.profile_image;
+          loginWindow();
+          setCookie("profile_image", profileImage);
+          setCookie("loginStatus", LOGINED);
+          userIconDisplay(profileImage);
+          console.log(profileImage);
         },
       });
     },
@@ -237,15 +294,21 @@ function loginPopupCloseBtnClick() {
   });
 }
 // 카카오 로그아웃 함수
-function logoutKakao(){
+function logoutKakao() {
   Kakao.API.request({
-    url: '/v1/user/unlink',
-    success: function(response) {
-      console.log('로그아웃!');
-      notLoginDisp();
+    url: "/v1/user/unlink",
+    success: function (response) {
+      // console.log("로그아웃!");
+      notLoginWindowDisp();
+      setCookie("loginStatus", NOTLOGINED);
+      historyWindowStatus = RECENT;
+      emptyScreen();
+      tabStyle();
+      alert("로그아웃 되었습니다.");
     },
-    fail: function(error) {
+    fail: function (error) {
       console.log(error);
     },
   });
 }
+/************************************/

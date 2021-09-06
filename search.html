@@ -28,23 +28,26 @@
 <body>
   <!-- 석훈 추가 내용 -->
   <!-- top menu -->
-  <header>
+  <header class="header-searchpage">
     <!-- 헤더 컨테이너 -->
-    <div class="header_container">
+    <div class="header_container" id="header">
       <!-- 홈 타이틀 박스 -->
       <div class="title-box">
         <!-- 메인페이지로 가는 버튼 -->
-        <a href="http://127.0.0.1:5500/main.html" id="btn-main">
+        <a href="./main.html" id="btn-main">
           <h1>CHILI PEPPER</h1>
           <h2>칠리 페퍼</h2>
         </a>
-        <div class="logo-img"><img src="./images/chili.png" alt=""></div>
+        <div class="logo-img">
+          <!-- <img src="./images/chili.png" alt=""> -->
+        </div>
       </div>
       <div class="empty"></div>
       <!-- 검색창 박스 -->
       <div class="search-box">
-        <input id="search-text" placeholder="지역, 식당 또는 음식"> <button class="btn-search"><span>검색</span></button> </input>
+        <input id="search-text" placeholder="지역, 식당 또는 음식" autofocus> <a id="search-btn">검색</a> </input>
       </div>
+      <div class="empty"></div>
       <div class="empty"></div>
       <!-- 상단메뉴 컨테이너 -->
       <div class="menu-container">
@@ -61,7 +64,7 @@
         </div>
       </div>
     </div>
- </header>
+  </header>
 
   <!-- 드롭다운 창 -->
   <div class="history-opened">
@@ -237,12 +240,11 @@
     </div>
   </footer>
 
-
+  <script src="./scripts/cookies.js"></script>
   <script src="./scripts/header.js"></script>
   <script type="text/javascript"
   src="//dapi.kakao.com/v2/maps/sdk.js?appkey=c3220d7231781974bb6685aba3df2ed5&libraries=services"></script>
-<script src="./scripts/search.js">
-</script>
+  <script src="./scripts/search.js"></script>
 
 </body>
 

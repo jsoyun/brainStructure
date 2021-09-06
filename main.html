@@ -17,30 +17,33 @@
 <body>
 
   <!-- top menu -->
-  <header>
+  <header class="header-mainpage">
     <!-- 헤더 컨테이너 -->
-    <div class="header_container">
+    <div class="header_container" id="header">
       <!-- 홈 타이틀 박스 -->
       <div class="title-box">
         <!-- 메인페이지로 가는 버튼 -->
-        <a href="http://127.0.0.1:5500/main.html" id="btn-main">
+        <a href="./main.html" id="btn-main">
           <h1>CHILI PEPPER</h1>
           <h2>칠리 페퍼</h2>
         </a>
-        <div class="logo-img"><img src="./images/chili.png" alt=""></div>
+        <div class="logo-img">
+          <!-- <img src="./images/chili.png" alt=""> -->
+        </div>
       </div>
       <div class="empty"></div>
       <!-- 검색창 박스 -->
       <div class="search-box">
-        <input id="search-text" placeholder="지역, 식당 또는 음식"> <span>검색</span> </input>
+        <input id="search-text" placeholder="지역, 식당 또는 음식" autofocus> <a id="search-btn">검색</a> </input>
       </div>
+      <div class="empty"></div>
       <div class="empty"></div>
       <!-- 상단메뉴 컨테이너 -->
       <div class="menu-container">
         <!-- 유저 아이콘 / 프로필 사진 -->
         <div id="btn-icon">
           <div class="not-login-display" id="user-icon"></div>
-          <div id="user-profile-btn" >
+          <div id="user-profile-btn">
             <img class="login-display" src="" id="user-profile">
           </div>
         </div>
@@ -136,71 +139,88 @@
         <!-- 카테고리 세부내용 -->
         <div class="categ-menu">
           <!-- 카테고리 세부내용 페이지로 가기 위한 링크(텍스트) -->
-          <a href="" class="thumbnail" ng-click="select-home-category('한식')">
-            <div class="categ-menu-sub">한식
-              <!-- 카테고리 세부내용 페이지로 가기 위한 링크(그림) -->
-              <img src="./images/bibimbap.png" class="categ-menu-sub-img" />
+          <a id="korean-food" class="thumbnail" ng-click="select-home-category('한식')">
+            <div class="categ-menu-sub">한식</div>
+            <!-- 카테고리 세부내용 페이지로 가기 위한 링크(그림) -->
+            <img src="./images/bibimbap.png" class="categ-menu-sub-img" />
+          </a>
+        </div>
+        <div class="categ-menu">
+          <a id="japaness-food" class="thumbnail" ng-click="select-home-category('일식')">
+            <div class="categ-menu-sub">일식</div>
+            <img src="./images/sushi.png" class="categ-menu-sub-img" />
+          </a>
+        </div>
+        <div class="categ-menu">
+          <a id="chiness-food" class="thumbnail" ng-click="select-home-category('중식')">
+            <div class="categ-menu-sub">중식</div>
+            <img src="./images/chinese.png" class="categ-menu-sub-img" />
+          </a>
+        </div>
+        <div class="categ-menu">
+          <a id="western-food" class="thumbnail" ng-click="select-home-category('양식')">
+            <div class="categ-menu-sub">양식</div>
+            <img src="./images/pizza.png" class="categ-menu-sub-img" />
+          </a>
+        </div>
+        <div class="categ-menu">
+          <a id="fast-food" class="thumbnail" ng-click="select-home-category('간편식')">
+            <div class="categ-menu-sub">간편식</div>
+            <img src="./images/sandwich.png" class="categ-menu-sub-img" />
           </a>
         </div>
       </div>
-      <div class="categ-menu">
-        <a href="" class="thumbnail" ng-click="select-home-category('일식')">
-          <div class="categ-menu-sub">일식
-            <img src="./images/sushi.png" class="categ-menu-sub-img" />
-        </a>
+      <!-- 맛집랭킹 전체 박스 -->
+      <div class="random-container">
+        <!-- 맛집랭킹 타이틀-->
+        <div class="random-title"><span id="random-title">맛집 랭킹</span></div>
+        <!-- 맛집랭킹 1~3순위.. div로만 걸어놓고 JS로 API 걸면 되려나? -->
+        <!-- 순위 구역 좀 더 나눠주고 inlineblock이나 grid로 3등분하기 -->
+        <div class="random-box" id="random-box1">
+          <div class="res-image"></div>
+          <div class="res-name"></div>
+          <div class="res-category"></div>
+          <div class="res-mainmenu"></div>
+          <div class="res-addr"></div>
+        </div>
+        <div class="random-box" id="random-box2">
+          <div class="res-image"></div>
+          <div class="res-name"></div>
+          <div class="res-category"></div>
+          <div class="res-mainmenu"></div>
+          <div class="res-addr"></div>
+        </div>
+        <div class="random-box" id="random-box3">
+          <div class="res-image"></div>
+          <div class="res-name"></div>
+          <div class="res-category"></div>
+          <div class="res-mainmenu"></div>
+          <div class="res-addr"></div>
+        </div>
+      </div>
+      
+      <!-- 베스트리뷰 전체 박스 -->
+      <div class="review-container">
+        <!-- 베스트 리뷰 타이틀 -->
+        <div class="review-title">
+          <span id="review-title">베스트 리뷰</span>
+        </div>
+        <!-- 베스트 리뷰 1~3 순위 -->
+        <div class="review-num num1"></div>
+        <div class="review-num num2"></div>
+        <div class="review-num num3"></div>
       </div>
     </div>
-    <div class="categ-menu">
-      <a href="" class="thumbnail" ng-click="select-home-category('중식')">
-        <div class="categ-menu-sub">중식
-          <img src="./images/chinese.png" class="categ-menu-sub-img" />
-      </a>
-    </div>
-    </div>
-    <div class="categ-menu">
-      <a href="" class="thumbnail" ng-click="select-home-category('양식')">
-        <div class="categ-menu-sub">양식
-          <img src="./images/pizza.png" class="categ-menu-sub-img" />
-      </a>
-    </div>
-    </div>
-    <div class="categ-menu">
-      <a href="" class="thumbnail" ng-click="select-home-category('간편식')">
-        <div class="categ-menu-sub">간편식
-          <img src="./images/sandwich.png" class="categ-menu-sub-img" />
-      </a>
-    </div>
-    </div>
-    </div>
-    <!-- 맛집랭킹 전체 박스 -->
-    <div class="rank-container">
-      <!-- 맛집랭킹 타이틀-->
-      <div class="rank-title"><span id="rank-title">맛집 랭킹</span></div>
-      <!-- 맛집랭킹 1~3순위.. div로만 걸어놓고 JS로 API 걸면 되려나? -->
-      <!-- 순위 구역 좀 더 나눠주고 inlineblock이나 grid로 3등분하기 -->
-      <div class="rank-num num1"></div>
-      <div class="rank-num num2"></div>
-      <div class="rank-num num3"></div>
-    </div>
-    <!-- 베스트리뷰 전체 박스 -->
-    <div class="review-container">
-      <!-- 베스트 리뷰 타이틀 -->
-      <div class="review-title">
-        <span id="review-title">베스트 리뷰</span>
-      </div>
-      <!-- 베스트 리뷰 1~3 순위 -->
-      <div class="review-num num1"></div>
-      <div class="review-num num2"></div>
-      <div class="review-num num3"></div>
-    </div>
-    </div>
+
   </main>
   <!-- footer -->
   <footer>
     <div class="footer-container">
       <div class="footer-logo-box">
         <h1>CHILI PEPPER</h1>
-        <div class="footer-logo-img"><img src="./images/chili_footer_logo.png" alt=""></div>
+        <div class="footer-logo-img">
+          <img src="./images/chili_footer_logo.png" alt="">
+        </div>
         <h2>칠리 페퍼</h2>
       </div>
       <div class="footer-menu-box">
@@ -222,8 +242,10 @@
       </div>
     </div>
   </footer>
-  <script src="./scripts/header.js"></script>
+  <script src="./scripts/cookies.js"></script>
   <script src="./scripts/main.js"></script>
+  <script src="./scripts/header.js"></script>
+  <!-- <script src="./scripts/main.js"></script> -->
 </body>
 
 </html>
