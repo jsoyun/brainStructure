@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리뷰 작성</title>
+    <link rel="stylesheet" href="/styles/review_write.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> -->
+</head>
+<body>
+    <h1 class="head">당신의 경험을 공유해주세요</h1>
+    <form action=“process_create_reviews.php” method=“post” id="review">
+        <fieldset>
+            <legend>방문 식당 정보</legend>
+            <ul>
+              <li>
+                <label for="review-restid">식당 이름</label>
+                <input id="review-restid" name="restaurantName" type="text" required autofocus />
+              </li><br>
+              <li>
+                <!-- ▼ text말고 달력 넣어보자 -->
+                    <p class="review-date">방문 일자 <input type="text" id="datepicker" name="visitDate" placeholder="월 / 일 / 연도"></p>
+              </li><br>
+            </ul>
+        </fieldset>
+        <fieldset>
+            <legend>리뷰 작성</legend>
+            <ul>
+                <!-- 별점 매기기 -->
+                <li>
+                    <p name="starRate" type="number" id="staR">
+                        <a value="1">★</a>
+                        <a value="2">★</a>
+                        <a value="3">★</a>
+                        <a value="4">★</a>
+                        <a value="5">★</a>
+                    </p>
+                </li><br>
+                <!-- 리뷰할 내용 쓰기 -->
+                <li>
+                    <label for="review-content">내 용</label>
+                    <input
+                    id="review-content"
+                    name="contents"
+                    class="review-content-space"
+                    type="text"
+                    placeholder=" 식사는 즐거우셨나요? 매장 청결도는 마음에 드셨나요?"
+                    required
+                    autocomplete="off"
+                    />
+                </li><br>
+                <!-- 사진 파일 첨부 -->
+                <li>
+                  <label for="fphoto">사진을 첨부해주세요</label>
+                    <form name="fphoto" id="fphoto" method="post" enctype="multipart/form-data">
+                        <input type="file" id="userfile1" name="fphoto" >
+                        <input type="button" id="photoBtn" value="첨부하기">
+                    </form>
+                </li><br>
+            </li>
+            </ul>
+          </fieldset><br><br>
+          <fieldset class="button-submit">
+              <button type="submit">
+                제 출
+              </button>
+          </fieldset>
+    </form>
+<script src="/scripts/review_write.js"></script>
+</body>
+</html>

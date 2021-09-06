@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background: #f5ccb1;
+    padding: 50px;
+  }
+  .head{
+      text-align: center;
+  }
+  a:hover,
+  button:hover,
+  input:hover{
+    cursor: pointer;
+  }
+  #review {
+    background: #f3e6e6;
+    border: 5px solid #f16262;
+    border-radius: 30px 0 30px 0;
+    padding: 20px;
+    margin: 30px auto;
+    width: 800px;
+  }
+  #review fieldset {
+    border: 2px solid #f3e6e6;
+    margin-bottom: 30px;
+  }
+  /* #review fieldset >.button-submit {
+    border: none;
+  } */
+  #review legend {
+    border: 3px solid #f8a381;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+  #review ul li {
+    list-style: none;
+    line-height: 30px;
+    padding: 10px 10px;
+    margin-bottom: 3px;
+  }
+  input {
+    padding: 5px;
+  }
+  #review button {
+    border: 1px solid #333;
+    border-radius: 5px;
+    display: block;
+    letter-spacing: 3px;
+    margin: auto;
+    font-size: 15px;
+    padding: 10px 25px;
+  }
+  #review-content[required] {
+    height: 200px;
+    width: 600px;
+  }
+  #review input[required] {
+    border: 1px solid red;
+  }
+  #review input {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    width: 250px;
+  }
+  
+/* 추가 ///////////////////////////// */
+  #staR {
+    font-size: 2.5rem;
+  }
+  #staR a{
+    text-decoration: none;
+    color: #c0c0c0;
+  }
+  #staR a.on{
+    color: yellow;
+  }
+.title .roboto{
+  font-size: 8px;
+}
+.button-submit{
+  text-align: center;
+  border: none;
+}
+button {
+  width: 70px;
+  font-size: 1rem;
+  height: 40px;
+  border: 3px solid orange;
+  border-radius: 10px;
+}
