@@ -61,7 +61,6 @@ function removeList(className){
     itemList[0].remove();
   }
 }
-href = `https://map.kakao.com/?q=${res name}`
 
 // 상단 메뉴 바 위치에 따라 변경
 function scrollBar(){
