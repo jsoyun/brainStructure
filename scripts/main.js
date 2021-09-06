@@ -10,7 +10,7 @@ function clickCategory(id, categoryName) {
   idName.addEventListener("click", () => {
     setCookie("searchKeyword", categoryName);
     console.log(getCookie("searchKeyword"));
-    // idName.href = "search.html";
+    idName.href = "search.html";
     // window.open("search.html", "_blank");
   });
 }
