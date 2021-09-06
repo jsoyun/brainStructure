@@ -10,12 +10,36 @@ main {
 }
 /* 메인 컨테이너 */
 .main-container {
-  height: 60rem;
+  height: 45rem;
   padding: 1rem;
   /* 추후 border는 모두 삭제 예정(현재 구분용) */
   /* border: 3px solid red; */
   /* margin: 1rem 1rem; */
   /* overflow: auto; */
+}
+/* 리뷰게시판 네비게이션 틀 */
+.floating-menu {
+  font-size: 1rem;
+  background: #eee8dd;
+  border-radius: 10px;
+  padding: 5px;
+  width: auto;
+  z-index: 100;
+  position: fixed;
+  right: 20px;
+  bottom: 30px;
+}
+/* 리뷰게시판 네비게이션 이미지 */
+.toktok{
+  text-align: center;
+}
+/* 리뷰게시판 네비게이션 내부 글 */
+.floating-menu a, 
+.floating-menu h3 {
+  font-size: 1em;
+  display: block;
+  margin: 0;
+  color: orange;
 }
 /* 카테고리를 감싸는 큰 박스 */
 .categ-container {
@@ -97,24 +121,33 @@ main {
 .res-category, .res-mainmenu{
   font-size: 1rem;
 }
-/* 베스트 리뷰 전체를 감싸는 큰 박스*/
+/* 추천메뉴 전체를 감싸는 큰 박스*/
 .review-container {
+  /* width: 100%; */
   height: 20rem;
   padding: 1rem 1rem;
-  border: 1px solid red;
+  border: none;
   margin: 1rem 1rem;
   display: grid;
-  grid-template-columns: 15% 1fr 1fr 1fr;
-  grid-gap: 1rem;
 }
-/* 베스트 리뷰 타이틀 */
+.review-title{
+  text-align: center;
+}
+/* 추천메뉴 타이틀 */
 #review-title {
   font-size: 1.5rem;
   font-weight: bold;
 }
-/* 베스트 리뷰 리스트 */
+/* 추천메뉴 리스트 */
 .review-num {
   display: inline-block;
   padding: 1rem 1rem;
+  font-size: 3rem;
+  font-weight: bold;
 }
-
+/* 추천메뉴 이름 */
+.review-name{
+  font-size: 3rem;
+  font-weight: bold;
+  color: orange;
+}

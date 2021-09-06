@@ -132,6 +132,10 @@
   <main>
     <!-- 카테고리, 맛집랭킹, 베스트 리뷰 세개를 다 감싸는 박스 -->
     <div class="main-container">
+              <!-- 리뷰게시판으로 넘어갈 수 있는 네비게이션 -->
+              <nav class="floating-menu">
+                <a href="review_list" class="toktok"><h3>리뷰 게시판</h3><img src="./images/review.png" class="floating-picture" height="50" width="50"></a>
+              </nav>
       <!-- 카테고리 전체 박스 -->
       <div class="categ-container">
         <!-- 카테고리 타이틀 -->
@@ -145,6 +149,7 @@
             <img src="./images/bibimbap.png" class="categ-menu-sub-img" />
           </a>
         </div>
+        <!-- 각각의 카테고리 -->
         <div class="categ-menu">
           <a id="japaness-food" class="thumbnail" ng-click="select-home-category('일식')">
             <div class="categ-menu-sub">일식</div>
@@ -170,12 +175,12 @@
           </a>
         </div>
       </div>
-      <!-- 맛집랭킹 전체 박스 -->
+      <br>
+      <!-- 오늘의추천 전체 박스 -->
       <div class="random-container">
-        <!-- 맛집랭킹 타이틀-->
+        <!-- 오늘의추천 타이틀-->
         <div class="random-title"><span id="random-title">맛집 랭킹</span></div>
-        <!-- 맛집랭킹 1~3순위.. div로만 걸어놓고 JS로 API 걸면 되려나? -->
-        <!-- 순위 구역 좀 더 나눠주고 inlineblock이나 grid로 3등분하기 -->
+        <!-- 오늘의추천 1~3순위 -->
         <div class="random-box" id="random-box1">
           <div class="res-image"></div>
           <div class="res-name"></div>
@@ -199,17 +204,19 @@
         </div>
       </div>
       
-      <!-- 베스트리뷰 전체 박스 -->
-      <div class="review-container">
-        <!-- 베스트 리뷰 타이틀 -->
-        <div class="review-title">
-          <span id="review-title">베스트 리뷰</span>
+        <!-- 추천 카테고리 전체 박스 -->
+        <div class="review-container">
+          <!-- 추천카테고리 타이틀 -->
+          <div class="review-title">
+            <span id="review-title">당신에게 오늘<a href="" class="review-num"></a>을(를) 추천할게요</span>
+          </div>
+          <!-- 카테고리 추천 복사해놓을 곳 -->
+          <!-- 복제할 템플릿 -->
+           <div id="review-template" class="review">
+            <!-- <div class="review-no"></div> -->
+           <div class="review-name"></div>
+          </div>
         </div>
-        <!-- 베스트 리뷰 1~3 순위 -->
-        <div class="review-num num1"></div>
-        <div class="review-num num2"></div>
-        <div class="review-num num3"></div>
-      </div>
     </div>
 
   </main>
