@@ -28,6 +28,7 @@ main {
   position: fixed;
   right: 20px;
   bottom: 50px;
+  opacity: 0.9;
 }
 /* 리뷰게시판 네비게이션 이미지 */
 .toktok{
