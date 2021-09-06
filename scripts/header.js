@@ -46,8 +46,6 @@ function searchHeader() {
     }
     setCookie("searchKeyword", searchKeyword.value);
     console.log(getCookie("searchKeyword"));
-    mapSearchAutoFilled(getCookie("searchKeyword"));
-    searchPlaces();
     removeList("res-list");
     search(getCookie("searchKeyword"));
   });

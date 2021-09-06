@@ -3,6 +3,7 @@ $(function(){
   mapSearchAutoFilled(getCookie("searchKeyword"));
   searchPlaces();
   researchClick();
+  search(getCookie("searchKeyword"));
 })
 
 function researchClick(){
@@ -39,7 +40,7 @@ const $list = $(".classList");
       let menu = item.MAIN_EDF;
       let addr = item.SITE_ADDR_RD;
       let category = item.SNT_UPTAE_NM;
-
+      console.log(1);
       //걔네들을 contents배열로 만들어줌
       let contents = [name, menu, addr, category];
       // contents배열을 for문 돌림

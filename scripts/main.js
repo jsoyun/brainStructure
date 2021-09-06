@@ -1,6 +1,7 @@
 $(function () {
   Category();
-  // randomDisplay(randNum());
+  request();
+  randomDisplay(randNum());
 });
 
 /************ 카테고리 ************/
@@ -77,7 +78,6 @@ function request() {
       }
     });
 }
-request();
 
 function randomDisplay(randNumList) {
   const API_URL = "http://openapi.gd.go.kr:8088/6b6963726e69736133307158495a53/json/GdModelRestaurantDesignate/1/171/";
@@ -88,12 +88,9 @@ function randomDisplay(randNumList) {
     for (let i = 0; i < 1; i++) {
       let randNumber = randNumList[i];
       let item = list[randNumber];
-      console.log(randNumber);
       let $elem = $("#review-template").clone().removeAttr("id");
-      // $elem.find(".review-no").html(i + 1);
       $elem.find(".review-name").html(item.MAIN_EDF);
       $reviewNum.append($elem);
     }
   });
 }
-randomDisplay(randNum());
