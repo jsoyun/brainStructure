@@ -20,7 +20,7 @@
   overflow-y: scroll;
 }
 #item-template {
-  display: none;
+  /* display: none; */
 }
 .item {
   padding: 10px 20px;

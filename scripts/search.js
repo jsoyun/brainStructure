@@ -1,6 +1,6 @@
 $(function(){
   // 키워드로 장소를 검색합니다
-  mapSearch(getCookie("searchKeyword"));
+  mapSearchAutoFilled(getCookie("searchKeyword"));
   searchPlaces();
   researchClick();
 })
@@ -8,16 +8,60 @@ $(function(){
 function researchClick(){
   const researchBtn=document.getElementById("research-btn");
   researchBtn.addEventListener("click",()=>{
-    // 키워드 쿠키 삭제
+    // 키워드 쿠키 빈칸으로 만들기
     setCookie("searchKeyword", "");
   });
 }
 
 // 지도에 키워드 자동 입력
-function mapSearch(keyword){
+function mapSearchAutoFilled(keyword){
   const mapKeyword = document.getElementById("keyword");
   mapKeyword.value = "천호역 " + keyword;
 }
+
+//서치함수
+function search(searchKeyword) {
+  // 식당 API
+const API_URL =
+"http://openapi.gd.go.kr:8088/44777756477465733936475267654e/json/GdModelRestaurantDesignate/1/1000/";
+
+const $list = $(".classList");
+
+  $.get(API_URL, { searchKeyword: searchKeyword }, function (data) {
+    //list로 데이터의 구체적 배열, 할당해줌
+    let list = data.GdModelRestaurantDesignate.row;
+
+    //list 배열 반복되는 거 item에 들어감
+    for (let i = 0; i < list.length; i++) {
+      let item = list[i];
+      //그 item의 보여줄정보(배열이름임)를 간단히 이름 붙여줌
+      let name = item.UPSO_NM;
+      let menu = item.MAIN_EDF;
+      let addr = item.SITE_ADDR_RD;
+      let category = item.SNT_UPTAE_NM;
+
+      //걔네들을 contents배열로 만들어줌
+      let contents = [name, menu, addr, category];
+      // contents배열을 for문 돌림
+      for (let X = 0; X < contents.length; X++) {
+        // searchKeyword가 검색 되고 빈칸이 아닐시 검색
+        if (contents[X].includes(searchKeyword)&&!(searchKeyword=="")) {
+          // #item-template의 클론을 만들어서 $elem 변수에 넣고 
+          // append로 클론을 classList에 추가
+          let $elem = $("#item-template").clone().removeAttr("id");
+          $elem.addClass("res-list");
+          $elem.find(".item-name").html(item.UPSO_NM);
+          $elem.find(".item-menu").html(item.MAIN_EDF);
+          $elem.find(".item-addr").html(item.SITE_ADDR_RD);
+          $elem.find(".item-category").html(item.SNT_UPTAE_NM);
+          //보여주겠다
+          $list.prepend($elem);
+        }
+      }
+    }
+  });
+}
+
 
 // 마커를 담을 배열입니다
 var markers = [];
