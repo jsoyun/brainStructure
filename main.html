@@ -65,7 +65,7 @@
       <ul class="tab-list">
         <li class="tab-item recent-tab">
           <button id="recent-tab-btn">
-            최근 본 맛집
+            최근 검색 목록
             <span class="recent-count"></span>
           </button>
         </li>
@@ -80,18 +80,16 @@
           <button class="clear-btn">x clear all</button>
         </div>
         <!-- 식당 정보 템플릿 -->
-        <ul class="restaurant-list">
-          <li class="restaurant-item">
-            <section class="restaurant-item-detail">
-              <a href="" class="restaurant-img-wrap">
-                <div class="restaurant-img">식당사진</div>
-              </a>
-              <div class="restaurant-info-box">
-                <a href="" class="restaurant-name-wrap">
-                  <h3 class="restaurant-name">식당이름</h3>
-                  <span class="restaurant-rating">5</span>
+        <ul class="search-history-list">
+          <li class="search-history-item">
+            <section class="search-history-item-detail">
+              <a href="" class="search-history-num">1.</a>
+              <div class="search-history-info-box">
+                <a href="" class="search-history-name-wrap">
+                  <h3 class="search-history-name">식당이름</h3>
+                  <span class="search-history-rating">5</span>
                 </a>
-                <span class="restaurant-desc">내용설명</span>
+                <span class="search-history-desc">내용설명</span>
               </div>
 
               <button class="wannaGo-btn"></button>
@@ -132,10 +130,12 @@
   <main>
     <!-- 카테고리, 맛집랭킹, 베스트 리뷰 세개를 다 감싸는 박스 -->
     <div class="main-container">
-              <!-- 리뷰게시판으로 넘어갈 수 있는 네비게이션 -->
-              <nav class="floating-menu">
-                <a href="review_list" class="toktok"><h3>리뷰 게시판</h3><img src="./images/review.png" class="floating-picture" height="50" width="50"></a>
-              </nav>
+      <!-- 리뷰게시판으로 넘어갈 수 있는 네비게이션 -->
+      <nav class="floating-menu">
+        <a href="review_list" class="toktok">
+          <h3>리뷰 게시판</h3><img src="./images/review.png" class="floating-picture" height="50" width="50">
+        </a>
+      </nav>
       <!-- 카테고리 전체 박스 -->
       <div class="categ-container">
         <!-- 카테고리 타이틀 -->
@@ -203,20 +203,20 @@
           <div class="res-addr"></div>
         </div>
       </div>
-      
-        <!-- 추천 카테고리 전체 박스 -->
-        <div class="review-container">
-          <!-- 추천카테고리 타이틀 -->
-          <div class="review-title">
-            <span id="review-title">당신에게 오늘<a href="" class="review-num"></a>을(를) 추천할게요</span>
-          </div>
-          <!-- 카테고리 추천 복사해놓을 곳 -->
-          <!-- 복제할 템플릿 -->
-           <div id="review-template" class="review">
-            <!-- <div class="review-no"></div> -->
-           <div class="review-name"></div>
-          </div>
+
+      <!-- 추천 카테고리 전체 박스 -->
+      <div class="review-container">
+        <!-- 추천카테고리 타이틀 -->
+        <div class="review-title">
+          <span id="review-title">당신에게 오늘<a href="" class="review-num"></a>을(를) 추천할게요</span>
         </div>
+        <!-- 카테고리 추천 복사해놓을 곳 -->
+        <!-- 복제할 템플릿 -->
+        <div id="review-template" class="review">
+          <!-- <div class="review-no"></div> -->
+          <div class="review-name"></div>
+        </div>
+      </div>
     </div>
 
   </main>
