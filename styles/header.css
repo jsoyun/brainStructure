@@ -30,12 +30,14 @@ input:focus, textarea:focus, select:focus{
   border-bottom: 1px solid #dbdbdb;
 }
 header{
-  padding: 1rem 0;
   height: 40rem;
   background-color: #fff;
   /* background-image: url(../images/header-bg.jpg); */
   background-size: contain;
   z-index: 100;
+}
+.header-searchpage{
+  height: 5rem;
 }
 /* 비디오 */
 video{
@@ -220,7 +222,7 @@ video{
   background-color: transparent;
   color: #bbb;
 }
-  /* 히스토리 컨텐츠 부분 */
+/* 히스토리 컨텐츠 부분 */
 .search-history-list{
   /* default로 숨겨둠 */
   display: none;
@@ -228,45 +230,40 @@ video{
   margin-left: 1rem;
   margin-right: 0.5rem;
 }
-.search-history-item-detail{
+.search-history-item{
   display: flex;
-  justify-content: center;
   margin-bottom: 1rem;
+  justify-content: space-between;
+  align-items: center;
 }
-.search-history-num{
-  width: 2rem;
-  height: 2rem;
-  margin-right: 1rem;
-  font-size: 2rem;
+#search-history-template{
+  display: none;
 }
-.search-history-info-box{
-  width: 10rem;
-  margin-right: 1rem;
-}
-.search-history-name-wrap{
+.search-history-detail{
   display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
+  flex-direction: column;
+  color: #888;
+  font-size: 1rem;
 }
 .search-history-name{
   color: #333;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 .search-history-desc{
   color: #555;
   font-size: 0.75rem;
 }
-
 .wannaGo-btn{
   border: none;
   background-color: transparent;
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   background-image: url(../images/star_empty.png);
+  background-size: cover;
+  justify-content: right;
 }
-
-  /* 히스토리 footer 부분 */
+/* 히스토리 footer 부분 */
 .history-footer{
   height: 2rem;
   bottom: 0;

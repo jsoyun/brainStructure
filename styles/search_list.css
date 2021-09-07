@@ -23,9 +23,11 @@
   /* display: none; */
 }
 .res-list {
+  width: 80%;
   padding: 10px 20px;
   margin-bottom: 10px;
-  border-bottom: 3px solid orange;
+  border: 2px solid orange;
+  border-radius: 30px;
 }
 .item-detail {
   display: inline-block;

@@ -19,7 +19,7 @@ function Category() {
   const classElem = document.getElementsByClassName("thumbnail");
   for (let i = 0; i < classElem.length; i++) {
     const id = classElem[i].id;
-    const categoryName = classElem[i].children[0].textContent;
+    const categoryName = classElem[i].children[1].textContent;
     clickCategory(id, categoryName);
   }
 }

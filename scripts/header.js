@@ -1,39 +1,17 @@
-const EMPTY = 0;
+const EMPTY = "EMPTY";
 const NOTEMPTY = "NOTEMPTY";
 const RECENT = "RECENT";
 const WANNAGO = "WANNAGO";
 const LOGINED = "LOGINED";
 const NOTLOGINED = "NOTLOGINED";
 
+let loginStatus = NOTLOGINED;
 let contentsEmptyStatus = NOTEMPTY;
 let historyWindowStatus = RECENT;
 
-// 스크롤 살짝만 내려도 카테고리와 식당 추천으로 슝 내려가는 디자인
-window.addEventListener("wheel", function(e){
-	e.preventDefault();
-},{passive : false});
-var $html = $("html");
-var page = 1;
-var lastPage = $(".content").length;
-$html.animate({scrollTop:0},1);
-$(window).on("wheel", function(e){
- 	if($html.is(":animated")) return;
- 	if(e.originalEvent.deltaY > 0){
-		if(page== lastPage) return;
- 		page++;
-	}else if(e.originalEvent.deltaY < 0){
-		if(page == 1) return;
- 		page--;
-	}
-	var posTop = (page-1) * $(window).height();
- 	$html.animate({scrollTop : posTop});
- });
-
-
-
 $(function () {
   // 상단 메뉴 스크롤 바
-  scrollBar();
+  scrollSearchMenu()
 
   // 우측 상단 아이콘 / 프로필 사진
   usrIconClick();
@@ -46,7 +24,49 @@ $(function () {
 
   // 상단 검색창
   searchHeader();
+  createList("search-history-list", getCookie("historyList"));
 });
+
+/********************** 헤더 스크롤  **********************/
+// 스크롤 살짝만 내려도 카테고리와 식당 추천으로 슝 내려가는 디자인
+window.addEventListener(
+  "wheel",
+  function (e) {
+    e.preventDefault();
+  },
+  { passive: false }
+);
+var $html = $("html");
+var page = 1;
+var lastPage = $(".content").length;
+$html.animate({ scrollTop: 0 }, 1);
+$(window).on("wheel", function (e) {
+  if ($html.is(":animated")) return;
+  if (e.originalEvent.deltaY > 0) {
+    if (page == lastPage) return;
+    page++;
+  } else if (e.originalEvent.deltaY < 0) {
+    if (page == 1) return;
+    page--;
+  }
+  var posTop = (page - 1) * $(window).height();
+  $html.animate({ scrollTop: posTop });
+});
+function scrollSearchMenu() {
+  // 상단 메뉴 바 위치에 따라 변경
+  $(window).scroll(function () {
+    // scrollTop: 현재 브라우저의 창의 스크롤값을 구해줌
+    let top = $(window).scrollTop();
+    if (top > 80) {
+      $("#header").addClass("inverted");
+    } else {
+      $("#header").removeClass("inverted");
+    }
+  });
+  // 스크롤 내려가 있는 상태에서도 동작하게 함
+  $(window).trigger("scroll");
+}
+/*************************************************/
 
 /***************** 검색 버튼 **********************/
 // 클릭 + 엔터 누르면 쿠키에 검색어 저장
@@ -75,30 +95,53 @@ function searchHeader() {
     }
     // 검색한 키워드 쿠키에 저장
     setCookie("searchKeyword", searchKeyword.value);
-    console.log(getCookie("searchKeyword"));
+    let getSearchKeyword = getCookie("searchKeyword");
     // 현재 창이 search 페이지일때 동작들
-    if (window.location.href.includes("search.html")){
+    if (window.location.href.includes("search.html")) {
       removeList("res-list");
-      search(getCookie("searchKeyword"));
-      mapSearchAutoFilled(getCookie("searchKeyword"));
+      search(getSearchKeyword);
+      mapSearchAutoFilled(getSearchKeyword);
       searchPlaces();
-      storeSearchHistoryList(searchKeyword.value);
-      getSearchHistoryList();
     }
+    saveHistoryList(getSearchKeyword);
+    createList("search-history-list", getCookie("historyList"));
   });
 }
 
-// 배열에 검색목록 저장
-let historyData = [];
-function storeSearchHistoryList(str) {
-  if(!(str=="")){
-    historyData.push(str);
-    setCookie("historyList", historyData)
-  }
+// 검색 히스토리 생성
+function createList(palceToCreate, dataString) {
+  let historyArray = dataString.split(",");
+  removeList("recent-list");
+  if (!(historyArray == "")) {
+    for (let i = 0; i < historyArray.length; i++) {
+      let list = document.getElementsByClassName(palceToCreate)[0];
+      let elem = document
+        .getElementsByClassName("search-history-item")[0]
+        .cloneNode(true);
+      elem.removeAttribute("id");
+      elem.classList.add("recent-list");
+      let detail = elem.children[0];
+      detail.children[0].textContent = historyArray[i];
+      detail.children[1].textContent = "주소";
+      list.prepend(elem);
+    }
+    contentsEmptyStatus = NOTEMPTY;
+  } else contentsEmptyStatus = EMPTY;
+
+  historyContentsDisplay();
 }
-function getSearchHistoryList(){
-  let recentList = getCookie("historyList");
-  console.log(recentList);
+// 검색 히스토리를 쿠키에 저장
+function saveHistoryList(data) {
+  if (!(data == "")) {
+    let history;
+    let cookieData = getCookie("historyList");
+    if (cookieData == "") {
+      history = data;
+    } else {
+      history = cookieData + "," + data;
+    }
+    setCookie("historyList", history);
+  }
 }
 
 // 클론 리스트 지우기 함수
@@ -122,13 +165,13 @@ function scrollBar() {
     }
   });
   // 스크롤 내려가 있는 상태에서도 동작하게 함
-  $(window).trigger('scroll');
+  $(window).trigger("scroll");
 }
 
 /***************** 팝업 창 **********************/
 // 상단 유저 아이콘/프로필 클릭했을 때 동작 함수
 function usrIconClick() {
-  const button = $("#user-icon");
+  const IconBtn = $("#user-icon");
   const profile = $("#user-profile-btn");
   const blackedWindow = $(".blacked-window");
   historyContentsDisplay();
@@ -139,7 +182,7 @@ function usrIconClick() {
   // 목록 있을때 함수도 만들어야함
 
   // 유저 아이콘 클릭했을때 히스토리 창 및 전체 검은 화면 켜기
-  button.mouseup(function () {
+  IconBtn.mouseup(function () {
     toggleWindow();
   });
   // 프로필 사진 클릭했을때 히스토리 창 및 전체 검은 화면 켜기
@@ -174,11 +217,13 @@ function tabClick() {
   });
   wannagoTabBtn.mouseup(() => {
     historyWindowStatus = WANNAGO;
-    if (getCookie("loginStatus") == LOGINED) {
+    if (getCookie("loginStatus")) loginStatus = getCookie("loginStatus");
+
+    if (loginStatus == NOTLOGINED) {
+      loginPopupWindowOpen();
+    } else {
       historyContentsDisplay();
       tabStyle();
-    } else {
-      loginPopupWindowOpen();
     }
   });
 }
@@ -230,6 +275,17 @@ function historyContentsDisplay() {
   }
 }
 
+// clear all 버튼
+function clearBtnClick() {
+  const clearBtn = document.getElementById("clear-btn");
+  clearBtn.addEventListener("click", () => {
+    removeList("recent-list");
+    setCookie("historyList", "");
+    contentsEmptyStatus = EMPTY;
+    historyContentsDisplay();
+  });
+}
+
 // 로그인 버튼 눌렀을때 로그인 팝업창 띄우기
 function loginBtnClick() {
   const loginBtn = document.getElementById("login-btn");
@@ -244,7 +300,6 @@ function loginPopupWindowOpen() {
     document.getElementsByClassName("login-popup-window");
   loginPopupWindow[0].style.display = "block";
 }
-
 /****************************************/
 
 /************* 로그인 팝업창 *************/
@@ -260,7 +315,9 @@ function loginWindow() {
 }
 
 function userIconDisplay(image) {
-  let loginStatus = getCookie("loginStatus");
+  if (getCookie("loginStatus")) loginStatus = getCookie("loginStatus");
+
+  clearBtnClick();
   switch (loginStatus) {
     case LOGINED:
       loginWindowDisp();
@@ -338,6 +395,7 @@ function loginWithKakao() {
           const profileImage = loginData.properties.profile_image;
           loginWindow();
           setCookie("profile_image", profileImage);
+          loginStatus = LOGINED;
           setCookie("loginStatus", LOGINED);
           userIconDisplay(profileImage);
         },
@@ -360,6 +418,7 @@ function logoutKakao() {
     success: function (response) {
       console.log("로그아웃!");
       notLoginWindowDisp();
+      loginStatus = NOTLOGINED;
       setCookie("loginStatus", NOTLOGINED);
       historyWindowStatus = RECENT;
       historyContentsDisplay();

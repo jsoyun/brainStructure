@@ -4,7 +4,6 @@ $(function () {
   searchPlaces();
   researchClick();
   search(getCookie("searchKeyword"));
-  storeSearchHistoryList();
 });
 
 function researchClick() {
@@ -350,10 +349,8 @@ for (var i = 0; i < positions.length; i++) {
     "</span>" +
     "  </a>" +
     "</div>";
-  console.log(content);
   // 커스텀 오버레이가 표시될 위치입니다
   var position = positions[i].latlng;
-  console.log(position);
 
   // 커스텀 오버레이를 생성합니다
   var customOverlay = new kakao.maps.CustomOverlay({
