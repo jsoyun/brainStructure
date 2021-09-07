@@ -30,7 +30,7 @@ input:focus, textarea:focus, select:focus{
   border-bottom: 1px solid #dbdbdb;
 }
 header{
-  padding: 1rem 0;
+  padding: 0;
   height: 40rem;
   background-color: #fff;
   /* background-image: url(../images/header-bg.jpg); */
