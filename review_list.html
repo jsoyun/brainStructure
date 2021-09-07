@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리뷰게시판</title>
+    <link rel="stylesheet" href="./styles/review_list.css">
+</head>
+<body>
+
+  <?php
+    $connect = mysqli_connect('localhost', 'root', '1234', 'reviews') or die ("connect fail");
+    $query ="select * from rev order by no desc";
+    $result = $connect -> query($query);
+    $total = mysqli_num_rows($result);
+  ?>
+
+<main>
+    <section class="RestaurantReviewList">
+        <header class="RestaurantReviewList_Header">
+          <h2 class="RestaurantReviewList_Title">Reviews</h2>
+          <div class="RestaurantReviewWrite-button-wrap">
+            <a href="./create.html" class="RestaurantReviewWrite-button-link" >
+              <img class="RestaurantReviewWrite-button-grey" src="./images/write-grey-icon.png">
+              <img class="RestaurantReviewWrite-button-orange" src="./images/write-orange-icon.png"> 
+            </a>
+          </div>
+        </header>
+        <?php
+                    while($rows = mysqli_fetch_assoc($result)){
+                ?>
+        <ul class="RestaurantReviewList_ReviewList">
+          <!-- 리뷰템플릿 -->
+          <li class="RestaurantReviewList_ReviewItem">
+            <div class="RestaurantReviewItem_inner">
+              <div class="RestaurantReviewItem_User">
+                <div class="RestaurantReviewItem_UserPictureWrap">
+                </div>
+                <span class="RestaurantReviewItem_UserNickName">익명</span>
+              </div>
+              <div class="RestaurantReviewItem_ReviewContent">
+                <div class="RestaurantReviewItem_ReviewTextWrap">
+                  <p class="RestaurantReviewItem_ReviewTitle">음식점명: <?php echo $rows['restaurantName']?></p>
+                  <span class="RestaurantReviewItem_ReviewDate">등록일시: <?php echo $rows['created']?></span>
+                  <p class="RestaurantReviewItem_ReviewText"><?php echo $rows['contents']?></p>
+                </div>
+                <!-- 사진예정 -->
+                <!-- <ul class="RestaurantReviewItem_PictureList">
+                  <li class="RestaurantReviewItem_PictureItem">
+                    <button class="RestaurantReviewItem_PictureButton">
+                      <div class="RestaurantReviewItem_Picture_loaded"></div>
+                    </button>
+                  </li>
+                </ul> -->
+              </div>
+              <div class="RestaurantReviewItem_Rating_RestaurantReviewItem_Rating">
+                <span class="RestaurantReviewItem_RatingText"><p class="RestaurantReviewItem_RatingText_rate">평점 </p><?php echo $rows['starRate']?></span>
+                <span class="RestaurantReviewItem_VisitDate">(방문일:<?php echo $rows['visitDate']?>)</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <?php
+                    $total--;
+                    }
+                ?>
+    </section>
+</main>
+</body>
+</html>

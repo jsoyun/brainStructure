@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리뷰작성</title>
+    <link rel="stylesheet" href="./styles/review_write.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script> -->
+  </head>
+  <body>
+    <h1 class="head">당신의 경험을 공유해주세요</h1>
+    <form action="process_create.php" method="POST" id="review">
+      <fieldset id="review fieldset">
+        <legend id="review legend">방문 식당 정보</legend>
+          <ul>
+            <li>
+              <label for="review-restid">방문 장소</label>
+              <input id="review-restid" type="text" name="restaurantName" required autofocus>
+            </li><br>
+            <li>
+            <p class="review-date">방문 일자&nbsp<input type="text" name="visitDate" id="datepicker" placeholder="월 / 일 / 연도"></p>
+            </li><br>
+          </ul>
+      </fieldset>
+      <fieldset id="review fieldset">
+        <legend id="review legend">리뷰작성</legend>
+        <ul>
+          <li>
+            <p>별 점&nbsp<input type="number" name="starRate" placeholder="1~5점 중 몇점주시나요?"></p>
+          </li><br>
+          <li>
+            <label for="review-content">내 용</label>
+            <input
+            id="review-content"
+            name="contents"
+            class="review-content-space"
+            type="text"
+            placeholder=" 식사는 즐거우셨나요? 매장 청결도는 마음에 드셨나요?"
+            required
+            autocomplete="off"
+            />
+          </li><br>
+          <!-- <li>
+                  <label for="fphoto">사진을 첨부해주세요</label>
+                    <form name="fphoto" id="fphoto" method="post" enctype="multipart/form-data">
+                        <input type="file" id="userfile1" name="fphoto" >
+                        <input type="button" id="photoBtn" value="첨부하기">
+                    </form>
+                </li><br> -->
+
+        </ul>
+      </fieldset><br><br>
+      <fieldset class="button-submit">
+        <p><input id="review button" type="submit"></p>
+      </fieldset>
+    </form>
+    <script src="./scripts/review_write.js"></script>
+  </body>
+</html>
+

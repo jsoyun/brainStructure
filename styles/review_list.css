@@ -1,0 +1,175 @@
+* {
+    font-size: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+div{
+    display: block;
+}
+  
+/* 헤더 풋터 제외한 바디 크기  */
+main{
+    display: block;    
+    position: relative;
+    margin: 5rem 7rem;
+}
+
+/* 리뷰 목록시작 */
+ul ol li{
+    list-style: none;
+}
+
+.RestaurantReviewList{
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 5rem 2rem 2rem;
+
+    
+}
+.RestaurantReviewList_Header{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 2rem;
+    padding: 0 7rem 0 4rem;
+    justify-content: space-between;
+}
+.RestaurantReviewList_Title{
+    font-size: 3.5rem;
+    color: orange;
+}
+/* 리뷰작성버튼 */
+.RestaurantReviewWrite-button-wrap{
+    width: 10%;
+    size: 80%;
+}
+.RestaurantReviewWrite-button-link{
+    background-color: #ffffff00;
+    border: 0;
+    position: absolute;
+}
+
+.RestaurantReviewWrite-button-grey{
+    color: #9B9B9B;
+    width: 60px;
+    height: 60px;
+    position: absolute;    
+}
+    
+.RestaurantReviewWrite-button-orange{
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    display: none;    
+}
+/* 리뷰작성버튼 이미지 마스오버시 색상변경 */
+.RestaurantReviewWrite-button-link:hover .RestaurantReviewWrite-button-orange{
+    display: block;
+}
+.RestaurantReviewList_ReviewList{
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0 1.4rem 0 1.4rem;
+}
+/* 리뷰템플릿 */
+.RestaurantReviewList_ReviewItem{
+    position: relative;
+    border-bottom: 3px solid #DBDBDB;
+    padding: 0 2rem 0 2rem;
+
+}
+.RestaurantReviewItem_inner{
+    display: flex;
+    flex-direction: row;
+    padding: 1.4rem 0 1.4rem 0;
+}
+.RestaurantReviewItem_User{
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 5rem 1rem 1rem;
+    
+}
+.RestaurantReviewItem_UserPictureWrap{
+    width: 5rem;
+    height: 5rem;
+    margin-bottom: 0.3rem;
+    border-radius: 50%;
+    background-color: #dbdbdb;
+    font-size: larger;
+    background-image: url(./person_3.png);
+    background-position: center;
+    background-size: 100%;
+    
+}
+.RestaurantReviewItem_UserPicture_loaded{
+    border: none;
+}
+.RestaurantReviewItem_UserNickName{
+    margin-bottom: 0.1rem;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    text-align: center;
+    word-break: break-all;
+    color: #9B9B9B;
+
+}
+.RestaurantReviewItem_ReviewContent{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 60%;
+    text-decoration: none;
+}
+.RestaurantReviewItem_ReviewTextWrap{
+    display: flex;
+    flex-direction: column;
+}
+.RestaurantReviewItem_ReviewTitle{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.RestaurantReviewItem_ReviewDate{
+    font-size: 0.8rem;
+    line-height: 1.2;
+    color: #9B9B9B;
+    text-align: right;
+}
+.RestaurantReviewItem_ReviewText{
+    line-height: 1.2;
+}
+/* 사진예정 */
+/* .RestaurantReviewItem_PictureList{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1.5rem;
+}
+.RestaurantReviewItem_PictureItem{
+    list-style: none;
+} */
+.RestaurantReviewItem_Rating_RestaurantReviewItem_Rating{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    padding: 1.4rem 0 1.4rem 0;
+    
+}
+.RestaurantReviewItem_RatingText_rate{
+    font-size: 1.5rem;
+    color: #9B9B9B;
+}
+.RestaurantReviewItem_RatingText{
+    font-size: 3.5rem;
+    color: #ffa500;
+    text-align: center;
+    text-decoration: none;
+}
+.RestaurantReviewItem_VisitDate{
+    font-size: 0.8rem;
+    color: #9B9B9B;
+    text-align: center;
+    text-decoration: none;
+
+}
+
+
