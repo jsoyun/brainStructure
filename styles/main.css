@@ -27,8 +27,8 @@ main {
   z-index: 100;
   position: fixed;
   right: 20px;
-  bottom: 50px;
-  opacity: 0.9;
+  bottom: 80px;
+  opacity: 0.95;
 }
 /* 리뷰게시판 네비게이션 이미지 */
 .toktok{
