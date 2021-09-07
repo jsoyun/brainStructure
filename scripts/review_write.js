@@ -1,4 +1,4 @@
-// ● 달력 넣기 (datepicker 함수를 통해)
+// ● 달력 넣기 (datepicker)
 $( function() {
     $( "#datepicker" ).datepicker({
         changeMonth :true,

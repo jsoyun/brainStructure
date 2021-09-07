@@ -15,9 +15,9 @@
 </head>
 
 <body>
-
   <!-- top menu -->
   <header class="header-mainpage">
+    <iframe width="100%" height="650px" src="https://www.youtube.com/embed/lcU3pruVyUw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen muted autoplay loop></iframe>></iframe>
     <!-- 헤더 컨테이너 -->
     <div class="header_container" id="header">
       <!-- 홈 타이틀 박스 -->
@@ -125,15 +125,30 @@
       </ul>
     </div>
   </aside>
-
+  
   <!-- main contents -->
   <main>
     <!-- 카테고리, 맛집랭킹, 베스트 리뷰 세개를 다 감싸는 박스 -->
     <div class="main-container">
+
+      <!-- 음식추천 단 하나 전체 박스 -->
+      <div class="review-container">
+        <!-- 음식추천 단 하나 타이틀 -->
+        <div class="review-title">
+          
+          <span id="review-title">오늘은 뭘 먹을까 고민하고 있나요?<br>그런 당신에게<a href="" class="review-num"></a>을(를) 추천할게요</span>
+        </div>
+        <!-- 음식추천 단 하나 복사해놓을 곳 -->
+        <!-- 복제할 템플릿 -->
+        <div id="review-template" class="review">
+          <div class="review-name"></div>
+        </div>
+      </div>
+      
       <!-- 리뷰게시판으로 넘어갈 수 있는 네비게이션 -->
       <nav class="floating-menu">
         <a href="review_list.html" class="toktok">
-          <h3>리뷰 게시판</h3><img src="./images/review.png" class="floating-picture" height="50" width="50">
+          <h3>리뷰 게시판</h3><img src="./images/review.png" class="floating-picture" height="80" width="80">
         </a>
       </nav>
       <!-- 카테고리 전체 박스 -->
@@ -142,44 +157,76 @@
         <div class="categ-title"><span id="categ-title">카테고리</span></div>
         <!-- 카테고리 세부내용 -->
         <div class="categ-menu">
-          <!-- 카테고리 세부내용 페이지로 가기 위한 링크(텍스트) -->
           <a id="korean-food" class="thumbnail" ng-click="select-home-category('한식')">
-            <div class="categ-menu-sub">한식</div>
             <!-- 카테고리 세부내용 페이지로 가기 위한 링크(그림) -->
             <img src="./images/bibimbap.png" class="categ-menu-sub-img" />
+            <!-- 카테고리 세부내용 페이지로 가기 위한 링크(텍스트) -->
+            <div class="categ-menu-sub">한식</div>
           </a>
         </div>
         <!-- 각각의 카테고리 -->
         <div class="categ-menu">
           <a id="japaness-food" class="thumbnail" ng-click="select-home-category('일식')">
-            <div class="categ-menu-sub">일식</div>
             <img src="./images/sushi.png" class="categ-menu-sub-img" />
+            <div class="categ-menu-sub">일식</div>
           </a>
         </div>
         <div class="categ-menu">
-          <a id="chiness-food" class="thumbnail" ng-click="select-home-category('중식')">
-            <div class="categ-menu-sub">중식</div>
+          <a id="chiness-food" class="thumbnail" ng-click="select-home-category('중국식')">
             <img src="./images/chinese.png" class="categ-menu-sub-img" />
+            <div class="categ-menu-sub">중국식</div>
           </a>
         </div>
         <div class="categ-menu">
-          <a id="western-food" class="thumbnail" ng-click="select-home-category('양식')">
-            <div class="categ-menu-sub">양식</div>
-            <img src="./images/pizza.png" class="categ-menu-sub-img" />
+          <a id="fast-food" class="thumbnail" ng-click="select-home-category('뷔페식')">
+            <img src="./images/buffet.png" class="categ-menu-sub-img" />
+            <div class="categ-menu-sub">뷔페식</div>
           </a>
         </div>
         <div class="categ-menu">
-          <a id="fast-food" class="thumbnail" ng-click="select-home-category('간편식')">
-            <div class="categ-menu-sub">간편식</div>
-            <img src="./images/sandwich.png" class="categ-menu-sub-img" />
+          <a id="western-food" class="thumbnail" ng-click="select-home-category('경양식')">
+            <img src="./images/pasta.png" class="categ-menu-sub-img" />
+            <div class="categ-menu-sub">경양식</div>
+          </a>
+        </div>
+        <div class="categ-title"><span id="categ-title"></span></div>
+        <!-- ////////////////////////////////////////////////////////////////////////////////////// -->
+        <div class="categ-menu">
+          <a id="snack" class="thumbnail" ng-click="select-home-category('분식')">
+            <img src="./images/bunsik.png" class="categ-menu-sub-img" />
+            <div class="categ-menu-sub">분식</div>
+          </a>
+        </div>
+        <div class="categ-menu">
+          <a id="sashimi" class="thumbnail" ng-click="select-home-category('회집')">
+            <img src="./images/sashimi.png" class="categ-menu-sub-img" />
+            <div class="categ-menu-sub">회집</div>
+          </a>
+        </div>
+        <div class="categ-menu">
+          <a id="chicken" class="thumbnail" ng-click="select-home-category('호프/통닭')">
+            <img src="./images/chicken.png" class="categ-menu-sub-img" />
+            <div class="categ-menu-sub">호프/통닭</div>
+          </a>
+        </div>
+        <div class="categ-menu">
+          <a id="cafe" class="thumbnail" ng-click="select-home-category('까페')">
+            <img src="./images/cafe.png" class="categ-menu-sub-img" />
+            <div class="categ-menu-sub">까페</div>
+          </a>
+        </div>
+        <div class="categ-menu">
+          <a id="etcetera" class="thumbnail" ng-click="select-home-category('기타')">
+            <img src="./images/etcetera.png" class="categ-menu-sub-img" />
+            <div class="categ-menu-sub">기타</div>
           </a>
         </div>
       </div>
-      <br>
+      <br><br><br><br>
       <!-- 오늘의추천 전체 박스 -->
       <div class="random-container">
         <!-- 오늘의추천 타이틀-->
-        <div class="random-title"><span id="random-title">맛집 랭킹</span></div>
+        <div class="random-title"><span id="random-title">오늘의 식당 추천</span></div>
         <!-- 오늘의추천 1~3순위 -->
         <div class="random-box" id="random-box1">
           <div class="res-image"></div>
@@ -204,19 +251,6 @@
         </div>
       </div>
 
-      <!-- 추천 카테고리 전체 박스 -->
-      <div class="review-container">
-        <!-- 추천카테고리 타이틀 -->
-        <div class="review-title">
-          <span id="review-title">당신에게 오늘<a href="" class="review-num"></a>을(를) 추천할게요</span>
-        </div>
-        <!-- 카테고리 추천 복사해놓을 곳 -->
-        <!-- 복제할 템플릿 -->
-        <div id="review-template" class="review">
-          <!-- <div class="review-no"></div> -->
-          <div class="review-name"></div>
-        </div>
-      </div>
     </div>
 
   </main>

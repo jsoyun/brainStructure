@@ -8,6 +8,29 @@ const NOTLOGINED = "NOTLOGINED";
 let contentsEmptyStatus = NOTEMPTY;
 let historyWindowStatus = RECENT;
 
+// 스크롤 살짝만 내려도 카테고리와 식당 추천으로 슝 내려가는 디자인
+window.addEventListener("wheel", function(e){
+	e.preventDefault();
+},{passive : false});
+var $html = $("html");
+var page = 1;
+var lastPage = $(".content").length;
+$html.animate({scrollTop:0},1);
+$(window).on("wheel", function(e){
+ 	if($html.is(":animated")) return;
+ 	if(e.originalEvent.deltaY > 0){
+		if(page== lastPage) return;
+ 		page++;
+	}else if(e.originalEvent.deltaY < 0){
+		if(page == 1) return;
+ 		page--;
+	}
+	var posTop = (page-1) * $(window).height();
+ 	$html.animate({scrollTop : posTop});
+ });
+
+
+
 $(function () {
   // 상단 메뉴 스크롤 바
   scrollBar();

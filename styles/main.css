@@ -10,7 +10,7 @@ main {
 }
 /* 메인 컨테이너 */
 .main-container {
-  height: 45rem;
+  height: 55rem;
   padding: 1rem;
   /* 추후 border는 모두 삭제 예정(현재 구분용) */
   /* border: 3px solid red; */
@@ -20,14 +20,14 @@ main {
 /* 리뷰게시판 네비게이션 틀 */
 .floating-menu {
   font-size: 1rem;
-  background: #fff;
+  background: none;
   border-radius: 10px;
   padding: 5px;
   width: auto;
   z-index: 100;
   position: fixed;
   right: 20px;
-  bottom: 80px;
+  bottom: 100px;
   opacity: 0.95;
 }
 /* 리뷰게시판 네비게이션 이미지 */
@@ -37,7 +37,7 @@ main {
 /* 리뷰게시판 네비게이션 내부 글 */
 .floating-menu a, 
 .floating-menu h3 {
-  font-size: 1em;
+  font-size: 1.2em;
   display: block;
   margin: 0;
   color: orange;
@@ -73,24 +73,27 @@ main {
   display: flex;
   font-size: 1.3rem;
   flex-direction: column;
+  margin-bottom: 0.5rem;
 }
 /* 카테고리 세부선택 글 */
 .categ-menu-sub {
   font-size: inherit;
+  margin-left: 0.6rem;
+  margin-bottom: 1.5rem;
 }
 /* 카테고리 세부선택 이미지 */
 .categ-menu-sub-img {
   display: inline-block;
   width: 5rem;
   height: 5rem;
-  margin-left: 1rem;
+  margin-bottom: 0.3rem;
 }
 /* 오늘의추천 전체를 감싸는 큰 박스 */
 .random-container {
   height: 20rem;
   padding: 1rem 1rem;
   /* border: 1px solid red; */
-  margin: 1rem 1rem;
+  margin: 5rem 1rem;
   display: grid;
   grid-template-columns: 15% 1fr 1fr 1fr;
   grid-gap: 1rem;
@@ -125,7 +128,7 @@ main {
 /* 추천메뉴 전체를 감싸는 큰 박스*/
 .review-container {
   /* width: 100%; */
-  height: 20rem;
+  height: 18rem;
   padding: 1rem 1rem;
   border: none;
   margin: 1rem 1rem;
