@@ -293,28 +293,32 @@ function removeAllChildNods(el) {
   }
 }
 
-////////////밑에는 따로 배열해서 넣은 식당마커///
+////////////밑에는 따로 배열해서 넣은 식당마커/////////
 
 // 마커를 표시할 위치와 title 객체 배열입니다
 var positions = [
   {
     title: "가마솥 순대국밥",
     latlng: new kakao.maps.LatLng(37.540005298816624, 127.12334985085471),
+    link: "1835218933",
   },
   {
     title: "아키노유키 본점",
     latlng: new kakao.maps.LatLng(37.538894, 127.126467),
+    link: "11641919",
   },
   {
     title: "신가네화끈한매운갈비찜",
     latlng: new kakao.maps.LatLng(37.539398, 127.126977),
+    link: "73920060",
   },
   {
     title: "고향집홍어",
     latlng: new kakao.maps.LatLng(37.5371311, 127.123568),
+    link: "16057596",
   },
 ];
-////////////////////////////가운데 배열링크넣어보려는중.
+///////////////////
 
 // 마커 이미지의 이미지 주소입니다
 var imageSrc = "https://cdn-icons-png.flaticon.com/512/2533/2533563.png";
@@ -333,78 +337,29 @@ for (var i = 0; i < positions.length; i++) {
     title: positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
     image: markerImage, // 마커 이미지
   });
+
+  //배열 정리하기 위한 추가//
+  //추천식당 링크와 이름
+  var content =
+    '<div class="customoverlay">' +
+    '  <a href="https://place.map.kakao.com/' +
+    positions[i].link +
+    '"target="_blank">' +
+    '    <span class="title">' +
+    positions[i].title +
+    "</span>" +
+    "  </a>" +
+    "</div>";
+  console.log(content);
+  // 커스텀 오버레이가 표시될 위치입니다
+  var position = positions[i].latlng;
+  console.log(position);
+
+  // 커스텀 오버레이를 생성합니다
+  var customOverlay = new kakao.maps.CustomOverlay({
+    map: map,
+    position: position,
+    content: content,
+    yAnchor: 1,
+  });
 }
-//////////////////가마솥순대국밥 링크////////////
-
-var content =
-  '<div class="customoverlay">' +
-  '  <a href="https://place.map.kakao.com/1835218933" target="_blank">' +
-  '    <span class="title">가마솥 순대국밥</span>' +
-  "  </a>" +
-  "</div>";
-
-// 커스텀 오버레이가 표시될 위치입니다
-var position = new kakao.maps.LatLng(37.540005298816624, 127.12334985085471);
-
-// 커스텀 오버레이를 생성합니다
-var customOverlay = new kakao.maps.CustomOverlay({
-  map: map,
-  position: position,
-  content: content,
-  yAnchor: 1,
-});
-
-/////////////아키노유키 본점////
-var content =
-  '<div class="customoverlay">' +
-  '  <a href="https://place.map.kakao.com/11641919" target="_blank">' +
-  '    <span class="title">아키노유키 본점</span>' +
-  "  </a>" +
-  "</div>";
-
-// 커스텀 오버레이가 표시될 위치입니다
-var position = new kakao.maps.LatLng(37.538894, 127.126467);
-
-// 커스텀 오버레이를 생성합니다
-var customOverlay = new kakao.maps.CustomOverlay({
-  map: map,
-  position: position,
-  content: content,
-  yAnchor: 1,
-});
-/////////////////신가네화끈한매운갈비찜/////////////
-var content =
-  '<div class="customoverlay">' +
-  '  <a href="https://place.map.kakao.com/73920060" target="_blank">' +
-  '    <span class="title">신가네화끈한매운갈비찜</span>' +
-  "  </a>" +
-  "</div>";
-
-// 커스텀 오버레이가 표시될 위치입니다
-var position = new kakao.maps.LatLng(37.539398, 127.126977);
-
-// 커스텀 오버레이를 생성합니다
-var customOverlay = new kakao.maps.CustomOverlay({
-  map: map,
-  position: position,
-  content: content,
-  yAnchor: 1,
-});
-////////////////고향집홍어////////
-var content =
-  '<div class="customoverlay">' +
-  '  <a href="https://place.map.kakao.com/16057596" target="_blank">' +
-  '    <span class="title">고향집홍어</span>' +
-  "  </a>" +
-  "</div>";
-
-// 커스텀 오버레이가 표시될 위치입니다
-var position = new kakao.maps.LatLng(37.5371311, 127.123568);
-
-// 커스텀 오버레이를 생성합니다
-var customOverlay = new kakao.maps.CustomOverlay({
-  map: map,
-  position: position,
-  content: content,
-  yAnchor: 1,
-});
