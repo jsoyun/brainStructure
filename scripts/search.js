@@ -1,24 +1,22 @@
-$(function(){
+$(function () {
   // 키워드로 장소를 검색합니다
   mapSearchAutoFilled(getCookie("searchKeyword"));
   searchPlaces();
   researchClick();
   search(getCookie("searchKeyword"));
   storeSearchHistoryList();
-})
+});
 
-
-
-function researchClick(){
-  const researchBtn=document.getElementById("research-btn");
-  researchBtn.addEventListener("click",()=>{
+function researchClick() {
+  const researchBtn = document.getElementById("research-btn");
+  researchBtn.addEventListener("click", () => {
     // 키워드 쿠키 빈칸으로 만들기
     setCookie("searchKeyword", "");
   });
 }
 
 // 지도에 키워드 자동 입력
-function mapSearchAutoFilled(keyword){
+function mapSearchAutoFilled(keyword) {
   const mapKeyword = document.getElementById("keyword");
   mapKeyword.value = "천호역 " + keyword;
 }
@@ -26,10 +24,10 @@ function mapSearchAutoFilled(keyword){
 //서치함수
 function search(searchKeyword) {
   // 식당 API
-const API_URL =
-"http://openapi.gd.go.kr:8088/44777756477465733936475267654e/json/GdModelRestaurantDesignate/1/1000/";
+  const API_URL =
+    "http://openapi.gd.go.kr:8088/44777756477465733936475267654e/json/GdModelRestaurantDesignate/1/1000/";
 
-const $list = $(".classList");
+  const $list = $(".classList");
 
   $.get(API_URL, { searchKeyword: searchKeyword }, function (data) {
     //list로 데이터의 구체적 배열, 할당해줌
@@ -48,8 +46,8 @@ const $list = $(".classList");
       // contents배열을 for문 돌림
       for (let X = 0; X < contents.length; X++) {
         // searchKeyword가 검색 되고 빈칸이 아닐시 검색
-        if (contents[X].includes(searchKeyword)&&!(searchKeyword=="")) {
-          // #item-template의 클론을 만들어서 $elem 변수에 넣고 
+        if (contents[X].includes(searchKeyword) && !(searchKeyword == "")) {
+          // #item-template의 클론을 만들어서 $elem 변수에 넣고
           // append로 클론을 classList에 추가
           let $elem = $("#item-template").clone().removeAttr("id");
           $elem.addClass("res-list");
@@ -65,6 +63,20 @@ const $list = $(".classList");
   });
 }
 
+//식당리스트 업소명 클릭시 링크 새 창 뜸
+$(document).click(function (event) {
+  // console.log($(event.target));
+  // console.log($(event.target.firstChild));
+  if ($(event.target).hasClass("item-name")) {
+    console.log($(event.target).text());
+
+    const a = (href = `https://map.kakao.com/?q=${
+      "천호 " + $(event.target).text()
+    }`);
+    console.log(a);
+    window.open(a);
+  }
+});
 
 // 마커를 담을 배열입니다
 var markers = [];
@@ -85,7 +97,6 @@ var ps = new kakao.maps.services.Places();
 
 // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
 var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
-
 
 // 키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
@@ -397,4 +408,3 @@ var customOverlay = new kakao.maps.CustomOverlay({
   content: content,
   yAnchor: 1,
 });
-
