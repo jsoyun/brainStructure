@@ -3,21 +3,25 @@
   padding: 0;
   margin: 0;
 }
-a{
+a {
   text-decoration: none;
   color: inherit;
 }
-li{
+li {
   list-style: none;
 }
-button, input{
+button,
+input {
   border: none;
   background-color: transparent;
 }
-a:hover, button:hover{
+a:hover,
+button:hover {
   cursor: pointer;
 }
-input:focus, textarea:focus, select:focus{
+input:focus,
+textarea:focus,
+select:focus {
   /* input, textarea, select 선택시 아웃라인 제거 */
   outline: none;
 }
@@ -25,11 +29,11 @@ input:focus, textarea:focus, select:focus{
 /***** header *****/
 /******************/
 /* 스크롤 다운시 상단 메뉴바가 잘보이게! */
-#header.inverted{
+#header.inverted {
   background-color: rgba(255, 255, 255, 1);
   border-bottom: 1px solid #dbdbdb;
 }
-header{
+header {
   padding: 0;
   height: 40rem;
   background-color: #fff;
@@ -37,14 +41,17 @@ header{
   background-size: contain;
   z-index: 100;
 }
+.header-searchpage {
+  height: 10rem;
+}
 /* 비디오 */
-.imgGif{
+.imgGif {
   width: 100%;
   height: 650px;
   object-fit: cover;
 }
 /* 헤더 컨테이너 */
-.header_container{
+.header_container {
   position: fixed;
   top: 0;
   width: 100%;
@@ -57,18 +64,18 @@ header{
   z-index: 101;
 }
 /* 홈 타이틀 박스 */
-.title-box{
+.title-box {
   display: flex;
   justify-content: center;
   height: 4rem;
   text-align: center;
 }
-#btn-main{
+#btn-main {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-#btn-main>h1{
+#btn-main > h1 {
   width: 10rem;
   margin-top: 0.5rem;
   height: 1.75rem;
@@ -76,17 +83,17 @@ header{
   color: orange;
   text-shadow: 1px 1px 1px #dbdbdb;
 }
-#btn-main>h2{
+#btn-main > h2 {
   height: 1.25rem;
   font-size: 1rem;
   color: orange;
   text-shadow: 1px 1px 1px #dbdbdb;
 }
-.logo-img>img{
+.logo-img > img {
   width: 3.5rem;
 }
 /* 검색창 박스 */
-.search-box{
+.search-box {
   padding: 0;
   width: 35rem;
   height: 3rem;
@@ -96,7 +103,7 @@ header{
   text-align: center;
   line-height: 3rem;
 }
-#search-text{
+#search-text {
   vertical-align: middle;
   border: none;
   width: 25rem;
@@ -104,7 +111,7 @@ header{
   height: 2rem;
   cursor: auto;
 }
-#search-btn{
+#search-btn {
   float: right;
   background-color: orange;
   width: 5rem;
@@ -117,7 +124,7 @@ header{
   margin: 0;
 }
 /* 드롭다운 창으로 가는 버튼 */
-#user-icon{
+#user-icon {
   /* display: none; */
   border: none;
   background-color: transparent;
@@ -129,14 +136,15 @@ header{
   background-size: cover;
   margin: auto;
 }
-#user-profile{
+#user-profile {
   display: none;
 }
-#user-icon:hover, #user-profile-btn:hover{
+#user-icon:hover,
+#user-profile-btn:hover {
   cursor: pointer;
 }
 
-#user-profile{
+#user-profile {
   width: 3rem;
   height: 3rem;
   border: 2px solid orange;
@@ -148,21 +156,21 @@ header{
 /**********************/
 /***** 드롭다운 창 *****/
 /**********************/
-.history-opened{
+.history-opened {
   display: none;
 }
 
-.blacked-window{
+.blacked-window {
   position: fixed;
   top: 0%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
   z-index: 1100;
   display: none;
 }
 /* 히스토리 컨테이너 */
-.history-container{
+.history-container {
   position: absolute;
   top: 7rem;
   right: 5rem;
@@ -177,19 +185,19 @@ header{
   z-index: 1200;
   overflow-y: auto;
 }
-  /* 탭 부분 및 히스토리 헤더 */
-.tab-list{
+/* 탭 부분 및 히스토리 헤더 */
+.tab-list {
   display: flex;
   height: 3rem;
   flex-direction: row;
   flex-wrap: nowrap;
-  justify-content:center;
+  justify-content: center;
 }
-.tab-item>button:hover{
-  font-weight:bolder;
+.tab-item > button:hover {
+  font-weight: bolder;
   cursor: pointer;
 }
-.tab-item>button{
+.tab-item > button {
   display: inline-block;
   width: 10rem;
   border: none;
@@ -200,61 +208,62 @@ header{
   text-align: center;
   font-size: 1rem;
 }
-#history-contents-emptyView, #history-contents-emptyWannaGo{
+#history-contents-emptyView,
+#history-contents-emptyWannaGo {
   position: relative;
   top: 10rem;
   text-align: center;
   align-items: center;
 }
-#history-contents-emptyWannaGo{
+#history-contents-emptyWannaGo {
   display: none;
 }
-.history-contents-container{
+.history-contents-container {
   height: 26rem;
 }
-.history-contents-header{
-  margin: 0.5rem 1rem 0 1rem ;
+.history-contents-header {
+  margin: 0.5rem 1rem 0 1rem;
   display: flex;
   justify-content: flex-end;
 }
-.clear-btn{
+.clear-btn {
   border: none;
   background-color: transparent;
   color: #bbb;
 }
-  /* 히스토리 컨텐츠 부분 */
-.search-history-list{
+/* 히스토리 컨텐츠 부분 */
+.search-history-list {
   /* default로 숨겨둠 */
   display: none;
   margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 0.5rem;
 }
-.search-history-item{
+.search-history-item {
   display: flex;
   margin-bottom: 1rem;
   justify-content: space-between;
   align-items: center;
 }
-#search-history-template{
+#search-history-template {
   display: none;
 }
-.search-history-detail{
+.search-history-detail {
   display: flex;
   flex-direction: column;
   color: #888;
   font-size: 1rem;
 }
-.search-history-name{
+.search-history-name {
   color: #333;
   font-weight: bold;
   font-size: 1.5rem;
 }
-.search-history-desc{
+.search-history-desc {
   color: #555;
   font-size: 0.75rem;
 }
-.wannaGo-btn{
+.wannaGo-btn {
   border: none;
   background-color: transparent;
   width: 1.5rem;
@@ -264,20 +273,20 @@ header{
   justify-content: right;
 }
 
-  /* 히스토리 footer 부분 */
-.history-footer{
+/* 히스토리 footer 부분 */
+.history-footer {
   height: 2rem;
   bottom: 0;
   padding: 0.5rem 1rem;
   border-top: 1px solid #dbdbdb;
   text-align: center;
 }
-.history-footer>button{
+.history-footer > button {
   border: none;
   background-color: transparent;
-  line-height: 2rem;;
+  line-height: 2rem;
 }
-.history-footer>#login-btn{
+.history-footer > #login-btn {
   text-align: center;
   margin: auto;
   padding: 0.2rem;
@@ -285,41 +294,42 @@ header{
   border: 2px solid orange;
   border-radius: 30px;
 }
-.history-footer>#logout-btn{
+.history-footer > #logout-btn {
   /* default로 숨겨둠 */
   float: right;
   display: none;
 }
-#login-btn:hover, #logout-btn:hover{
+#login-btn:hover,
+#logout-btn:hover {
   cursor: pointer;
 }
 
 /* 클릭 효과, js에서 바꾸기 */
-.wannaGo-btn:hover{
+.wannaGo-btn:hover {
   animation: wannaGoClickEffect 1.7s ease-in-out;
-  animation-iteration-count:infinite;
+  animation-iteration-count: infinite;
 }
 @keyframes wannaGoClickEffect {
-  50%{
+  50% {
     transform: scale(1.1);
-      background-image: url(../images/star_yellow.png);
+    background-image: url(../images/star_yellow.png);
   }
 }
 
 /******************************/
 /***** login popup window *****/
 /******************************/
-.login-popup-window{
+.login-popup-window {
   z-index: 1300;
   width: 100%;
   height: 100%;
   position: fixed;
-  top: 0;  
-  background-color: rgba(0,0,0,0.6);
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.6);
   display: none;
   align-items: center;
 }
-.login-popup-container{
+.login-popup-container {
   margin: auto;
   top: 25%;
   position: relative;
@@ -330,23 +340,23 @@ header{
   text-align: center;
   border-radius: 30px;
 }
-#login-popup-close-btn{
+#login-popup-close-btn {
   border: none;
   background-color: transparent;
   position: absolute;
   top: 1rem;
   right: 1rem;
 }
-#login-popup-title{
+#login-popup-title {
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 1.5rem;
 }
-#login-popup-text{
+#login-popup-text {
   margin-bottom: 3rem;
   font-size: 1rem;
 }
-#login-popup-btn-kakao{
+#login-popup-btn-kakao {
   display: inline-block;
   width: 183px;
   height: 45px;
@@ -359,7 +369,7 @@ header{
 /***** footer *****/
 /******************/
 /* logo-box */
-.footer-container{
+.footer-container {
   top: 5rem;
   position: relative;
   padding: 1rem 1rem;
@@ -367,19 +377,21 @@ header{
   border-top: 2px solid #dbdbdb;
   color: #555;
 }
-.footer-logo-box>h1, .footer-logo-box>h2, .footer-logo-box>div{
+.footer-logo-box > h1,
+.footer-logo-box > h2,
+.footer-logo-box > div {
   display: inline-block;
 }
-.footer-logo-img>img{
+.footer-logo-img > img {
   width: 1rem;
 }
-.footer-menu-box{
+.footer-menu-box {
   display: flex;
   justify-content: flex-start;
   flex-basis: content;
   list-style: none;
 }
-.footer-menu-item>a{
+.footer-menu-item > a {
   padding-right: 0.5rem;
   margin-right: 0.5rem;
   border-right: 1px solid #555;
