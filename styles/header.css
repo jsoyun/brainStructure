@@ -2,6 +2,7 @@
   font-size: 16px;
   padding: 0;
   margin: 0;
+  font-family: "Malgun Gothic", dotum, "돋움", sans-serif;
 }
 a {
   text-decoration: none;
@@ -171,9 +172,9 @@ header {
 }
 /* 히스토리 컨테이너 */
 .history-container {
-  position: absolute;
-  top: 7rem;
-  right: 5rem;
+  position: fixed;
+  top: 9rem;
+  right: 6rem;
   width: 20rem;
   height: 32rem;
   border: 1px solid #dbdbdb;
@@ -183,7 +184,6 @@ header {
   flex: 1 auto 1;
   flex-direction: column;
   z-index: 1200;
-  overflow-y: auto;
 }
 /* 탭 부분 및 히스토리 헤더 */
 .tab-list {
@@ -202,7 +202,6 @@ header {
   width: 10rem;
   border: none;
   border-bottom: 1px solid #dbdbdb;
-  background-color: #fff;
   color: #333;
   line-height: 3rem;
   text-align: center;
@@ -220,16 +219,20 @@ header {
 }
 .history-contents-container {
   height: 26rem;
+  overflow-y: auto;
 }
 .history-contents-header {
   margin: 0.5rem 1rem 0 1rem;
+  height: 1rem;
   display: flex;
   justify-content: flex-end;
 }
-.clear-btn {
+#clear-btn {
   border: none;
   background-color: transparent;
   color: #bbb;
+  position: absolute;
+  right: 1.5rem;
 }
 /* 히스토리 컨텐츠 부분 */
 .search-history-list {
@@ -257,9 +260,9 @@ header {
 .search-history-name {
   color: #333;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
-.search-history-desc {
+.search-history-addr {
   color: #555;
   font-size: 0.75rem;
 }

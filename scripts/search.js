@@ -31,10 +31,29 @@ function search(searchKeyword) {
   $.get(API_URL, { searchKeyword: searchKeyword }, function (data) {
     //list로 데이터의 구체적 배열, 할당해줌
     let list = data.GdModelRestaurantDesignate.row;
+    // 중복 제거하기
+    function removeDuplicates(data){
+      // 업소명을 담아둘 리스트
+      let uniqueNameList = [];
+      // 유일한 업소명에 해당하는 객체를 담아둘 리스트
+      let newList = [];
+      data.forEach((element, index)=> {
+        let listName = element.UPSO_NM;
+        // uniqueNameList에 포함되지 않은 이름이면 push로 추가
+        if(!uniqueNameList.includes(listName)) {
+          uniqueNameList.push(listName);
+          // 해당 인덱스의 객체는 newlist에 보관
+          newList.push(data[index]);
+        };
+      });
+      return newList;
+    }
+    
+    let newList = removeDuplicates(list);
 
     //list 배열 반복되는 거 item에 들어감
-    for (let i = 0; i < list.length; i++) {
-      let item = list[i];
+    for (let i = 0; i < newList.length; i++) {
+      let item = newList[i];
       //그 item의 보여줄정보(배열이름임)를 간단히 이름 붙여줌
       let name = item.UPSO_NM;
       let menu = item.MAIN_EDF;
@@ -56,6 +75,9 @@ function search(searchKeyword) {
           $elem.find(".item-category").html(item.SNT_UPTAE_NM);
           //보여주겠다
           $list.prepend($elem);
+          // return은 함수 빠져나오기
+          // break는 가까운 반복문 빠져나오기
+          break;
         }
       }
     }
@@ -64,15 +86,12 @@ function search(searchKeyword) {
 
 //식당리스트 업소명 클릭시 링크 새 창 뜸
 $(document).click(function (event) {
-  // console.log($(event.target));
-  // console.log($(event.target.firstChild));
   if ($(event.target).hasClass("item-name")) {
-    console.log($(event.target).text());
-
-    const a = (href = `https://map.kakao.com/?q=${
-      "천호 " + $(event.target).text()
-    }`);
-    console.log(a);
+    const a = (href = `https://map.kakao.com/?q=${"천호 " + $(event.target).text()}`);
+    // 링크 클릭시 쿠키에 저장 및 팝업창에 생성
+    saveHistoryList("historyList",$(event.target).text());
+    saveHistoryList("historyAddrList",$(event.target).next().next().text());
+    createList(getCookie("historyList"), getCookie("historyAddrList"));
     window.open(a);
   }
 });

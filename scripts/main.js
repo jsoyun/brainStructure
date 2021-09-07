@@ -1,5 +1,6 @@
 $(function () {
   Category();
+  randDispClick();
   request();
   randomDisplay(randNum());
 });
@@ -84,7 +85,7 @@ function randomDisplay(randNumList) {
 
   $.get(API_URL, function (data) {
     let list = data.GdModelRestaurantDesignate.row;
-    const $reviewNum = $(".review-num");
+    const $reviewNum = $("#review-num");
     for (let i = 0; i < 1; i++) {
       let randNumber = randNumList[i];
       let item = list[randNumber];
@@ -92,5 +93,13 @@ function randomDisplay(randNumList) {
       $elem.find(".review-name").html(item.MAIN_EDF);
       $reviewNum.append($elem);
     }
+  });
+}
+
+function randDispClick(){
+  const reviewName = document.getElementById("review-num");
+  reviewName.addEventListener("click", ()=>{
+    setCookie("searchKeyword", reviewName.innerText);
+    reviewName.href="search.html";
   });
 }

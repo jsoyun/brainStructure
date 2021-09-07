@@ -24,7 +24,7 @@ $(function () {
 
   // 상단 검색창
   searchHeader();
-  createList("search-history-list", getCookie("historyList"));
+  createList(getCookie("historyList"), getCookie("historyAddrList"));
 });
 
 /********************** 헤더 스크롤  **********************/
@@ -103,26 +103,27 @@ function searchHeader() {
       mapSearchAutoFilled(getSearchKeyword);
       searchPlaces();
     }
-    saveHistoryList(getSearchKeyword);
-    createList("search-history-list", getCookie("historyList"));
+    // saveHistoryList("historyList", getSearchKeyword);
+    // createList(getCookie("historyList"));
   });
 }
 
 // 검색 히스토리 생성
-function createList(palceToCreate, dataString) {
-  let historyArray = dataString.split(",");
+function createList(dataString1, dataString2) {
+  let historyArray = dataString1.split(",");
+  let historyAddrArray = dataString2.split(",");
   removeList("recent-list");
-  if (!(historyArray == "")) {
+  if (!(historyArray == "")&&!(historyAddrArray == "")) {
     for (let i = 0; i < historyArray.length; i++) {
-      let list = document.getElementsByClassName(palceToCreate)[0];
+      let list = document.getElementsByClassName("search-history-list")[0];
       let elem = document
         .getElementsByClassName("search-history-item")[0]
         .cloneNode(true);
       elem.removeAttribute("id");
       elem.classList.add("recent-list");
       let detail = elem.children[0];
-      detail.children[0].textContent = historyArray[i];
-      detail.children[1].textContent = "주소";
+      detail.children[0].innerText = historyArray[i];
+      detail.children[1].innerText = historyAddrArray[i];
       list.prepend(elem);
     }
     contentsEmptyStatus = NOTEMPTY;
@@ -131,16 +132,18 @@ function createList(palceToCreate, dataString) {
   historyContentsDisplay();
 }
 // 검색 히스토리를 쿠키에 저장
-function saveHistoryList(data) {
-  if (!(data == "")) {
+function saveHistoryList(name, value) {
+  if (!(value == "")) {
     let history;
-    let cookieData = getCookie("historyList");
+    let cookieData = getCookie(name);
+    // 겹치는 목록이 있으면 바로 함수 탈출
+    if(!(cookieData.indexOf(value)==-1)) return;
     if (cookieData == "") {
-      history = data;
+      history = value.split(",")[0];
     } else {
-      history = cookieData + "," + data;
+      history = cookieData + "," + value.split(",")[0];
     }
-    setCookie("historyList", history);
+    setCookie(name, history);
   }
 }
 
@@ -158,7 +161,7 @@ function scrollBar() {
   $(window).scroll(function () {
     // scrollTop: 현재 브라우저의 창의 스크롤값을 구해줌
     let top = $(window).scrollTop();
-    if (top > 80) {
+    if (top > 0) {
       $("#header").addClass("inverted");
     } else {
       $("#header").removeClass("inverted");
@@ -176,10 +179,9 @@ function usrIconClick() {
   const blackedWindow = $(".blacked-window");
   historyContentsDisplay();
   tabStyle();
+  
 
   // 로그인/비로그인 상태일때 찜목록 만들어야함
-
-  // 목록 있을때 함수도 만들어야함
 
   // 유저 아이콘 클릭했을때 히스토리 창 및 전체 검은 화면 켜기
   IconBtn.mouseup(function () {
@@ -269,6 +271,18 @@ function historyContentsDisplay() {
       recentEmpty.style.display = "none";
       wannagoEmpty.style.display = "none";
       rsListElem[0].style.display = "block";
+      switch (historyWindowStatus) {
+        case RECENT:
+          rsListElem[0].style.display = "block";
+          break;
+        case WANNAGO:
+          rsListElem[0].style.display = "none";
+          recentEmpty.style.display = "none";
+          wannagoEmpty.style.display = "block";
+          break;
+        default:
+          console.error("Check historyWindowStatus");
+      }
       break;
     default:
       console.error("Check contentsEmptyStatus");
@@ -281,6 +295,7 @@ function clearBtnClick() {
   clearBtn.addEventListener("click", () => {
     removeList("recent-list");
     setCookie("historyList", "");
+    setCookie("historyAddrList", "");
     contentsEmptyStatus = EMPTY;
     historyContentsDisplay();
   });
@@ -316,7 +331,7 @@ function loginWindow() {
 
 function userIconDisplay(image) {
   if (getCookie("loginStatus")) loginStatus = getCookie("loginStatus");
-
+  
   clearBtnClick();
   switch (loginStatus) {
     case LOGINED:
