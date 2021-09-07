@@ -30,7 +30,6 @@ input:focus, textarea:focus, select:focus{
   border-bottom: 1px solid #dbdbdb;
 }
 header{
-  padding: 1rem 0;
   height: 40rem;
   background-color: #fff;
   /* background-image: url(../images/header-bg.jpg); */
@@ -48,7 +47,7 @@ header{
   position: fixed;
   top: 0;
   width: 100%;
-  height: 5rem;
+  height: 8rem;
   display: grid;
   grid-template-columns: 2fr 1fr auto 1fr 1fr 1fr;
   align-items: center;
@@ -74,7 +73,7 @@ header{
   height: 1.75rem;
   font-size: 1.5rem;
   color: orange;
-  text-shadow: 2px 2px 2px #dbdbdb;
+  text-shadow: 1px 1px 1px #dbdbdb;
 }
 #btn-main>h2{
   height: 1.25rem;
@@ -121,9 +120,11 @@ header{
   /* display: none; */
   border: none;
   background-color: transparent;
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   background-image: url(../images/user.png);
+  background-color: #fff;
+  border-radius: 50%;
   background-size: cover;
   margin: auto;
 }
@@ -228,42 +229,38 @@ header{
   margin-left: 1rem;
   margin-right: 0.5rem;
 }
-.search-history-item-detail{
+.search-history-item{
   display: flex;
-  justify-content: center;
   margin-bottom: 1rem;
+  justify-content: space-between;
+  align-items: center;
 }
-.search-history-num{
-  width: 2rem;
-  height: 2rem;
-  margin-right: 1rem;
-  font-size: 2rem;
+#search-history-template{
+  display: none;
 }
-.search-history-info-box{
-  width: 10rem;
-  margin-right: 1rem;
-}
-.search-history-name-wrap{
+.search-history-detail{
   display: flex;
-  flex-direction: row;
-  gap: 0.5rem;
+  flex-direction: column;
+  color: #888;
+  font-size: 1rem;
 }
 .search-history-name{
   color: #333;
   font-weight: bold;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 .search-history-desc{
   color: #555;
   font-size: 0.75rem;
 }
-
 .wannaGo-btn{
   border: none;
   background-color: transparent;
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   background-image: url(../images/star_empty.png);
+  background-size: cover;
+  justify-content: right;
 }
 
   /* 히스토리 footer 부분 */

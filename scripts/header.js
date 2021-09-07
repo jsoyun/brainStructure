@@ -57,7 +57,7 @@ function scrollSearchMenu() {
   $(window).scroll(function () {
     // scrollTop: 현재 브라우저의 창의 스크롤값을 구해줌
     let top = $(window).scrollTop();
-    if (top > 80) {
+    if (top > 0) {
       $("#header").addClass("inverted");
     } else {
       $("#header").removeClass("inverted");
