@@ -5,19 +5,23 @@ const WANNAGO = "WANNAGO";
 const LOGINED = "LOGINED";
 const NOTLOGINED = "NOTLOGINED";
 
-let contentsEmptyStatus = EMPTY;
+let contentsEmptyStatus = NOTEMPTY;
 let historyWindowStatus = RECENT;
 
 $(function () {
-  // setCookie('loginStatus', getCookie('loginStatus'));
-  // console.log(getCookie('loginStatus'));
-  // search(getCookie("searchKeyword"));
+  // 상단 메뉴 스크롤 바
   scrollBar();
-  usrIcon();
+
+  // 우측 상단 아이콘 / 프로필 사진
+  usrIconClick();
   userIconDisplay(getCookie("profile_image"));
+
+  // 아이콘 및 프로필 팝업창
   tabClick();
   loginPopupCloseBtnClick();
   loginBtnClick();
+
+  // 상단 검색창
   searchHeader();
 });
 
@@ -36,23 +40,46 @@ function searchHeader() {
       searchBtn.click();
     }
   });
-  // 버튼을 눌렀을때 검색어 쿠키에 저장
+
+  // 버튼을 눌렀을때
   searchBtn.addEventListener("click", () => {
-    if(window.location.href.includes("main.html")){
+    // 현재 창이 main 페이지면 search 페이지로 연결
+    if (window.location.href.includes("main.html")) {
       // 현재 창에서 검색창으로 연결
-      // searchBtn.href="search.html";
+      searchBtn.href = "search.html";
       // 새탭에서 검색창으로 연결
-      window.open("search.html", "_blank");
+      // window.open("search.html", "_blank");
     }
+    // 검색한 키워드 쿠키에 저장
     setCookie("searchKeyword", searchKeyword.value);
     console.log(getCookie("searchKeyword"));
-    removeList("res-list");
-    search(getCookie("searchKeyword"));
+    // 현재 창이 search 페이지일때 동작들
+    if (window.location.href.includes("search.html")){
+      removeList("res-list");
+      search(getCookie("searchKeyword"));
+      mapSearchAutoFilled(getCookie("searchKeyword"));
+      searchPlaces();
+      storeSearchHistoryList(searchKeyword.value);
+      getSearchHistoryList();
+    }
   });
 }
 
+// 배열에 검색목록 저장
+let historyData = [];
+function storeSearchHistoryList(str) {
+  if(!(str=="")){
+    historyData.push(str);
+    setCookie("historyList", historyData)
+  }
+}
+function getSearchHistoryList(){
+  let recentList = getCookie("historyList");
+  console.log(recentList);
+}
+
 // 클론 리스트 지우기 함수
-function removeList(className){
+function removeList(className) {
   const itemList = document.getElementsByClassName(className);
   const repeatNum = itemList.length;
   for (let i = 0; i < repeatNum; i++) {
@@ -61,25 +88,27 @@ function removeList(className){
 }
 
 // 상단 메뉴 바 위치에 따라 변경
-function scrollBar(){
+function scrollBar() {
   $(window).scroll(function () {
     // scrollTop: 현재 브라우저의 창의 스크롤값을 구해줌
     let top = $(window).scrollTop();
-    if (top > 160) {
+    if (top > 80) {
       $("#header").addClass("inverted");
     } else {
       $("#header").removeClass("inverted");
     }
   });
+  // 스크롤 내려가 있는 상태에서도 동작하게 함
+  $(window).trigger('scroll');
 }
 
-/***************** 유저 아이콘 **********************/
+/***************** 팝업 창 **********************/
 // 상단 유저 아이콘/프로필 클릭했을 때 동작 함수
-function usrIcon() {
+function usrIconClick() {
   const button = $("#user-icon");
   const profile = $("#user-profile-btn");
   const blackedWindow = $(".blacked-window");
-  emptyScreen();
+  historyContentsDisplay();
   tabStyle();
 
   // 로그인/비로그인 상태일때 찜목록 만들어야함
@@ -117,19 +146,16 @@ function tabClick() {
 
   recentTabBtn.mouseup(() => {
     historyWindowStatus = RECENT;
-    // console.log(historyWindowStatus);
-    emptyScreen();
+    historyContentsDisplay();
     tabStyle();
   });
   wannagoTabBtn.mouseup(() => {
     historyWindowStatus = WANNAGO;
-    // console.log(historyWindowStatus);
-    // console.log(loginStatus);
-    if (getCookie("loginStatus") == NOTLOGINED) {
-      loginPopupWindowOpen();
-    } else {
-      emptyScreen();
+    if (getCookie("loginStatus") == LOGINED) {
+      historyContentsDisplay();
       tabStyle();
+    } else {
+      loginPopupWindowOpen();
     }
   });
 }
@@ -148,12 +174,11 @@ function tabStyle() {
       break;
   }
 }
-// 최근 검색 목록 및 찜 목록이 없을때 화면 불러오기
-function emptyScreen() {
+// 최근 검색 목록 및 찜 목록 화면 불러오기
+function historyContentsDisplay() {
   const recentEmpty = document.getElementById("history-contents-emptyView");
   const wannagoEmpty = document.getElementById("history-contents-emptyWannaGo");
-  const rsListElem = document.getElementsByClassName("restaurant-list");
-  // rsListElem[0].style.display='none';
+  const rsListElem = document.getElementsByClassName("search-history-list");
 
   // 컨텐츠 내용의 유무에 따라 화면 바꾸기
   switch (contentsEmptyStatus) {
@@ -161,7 +186,6 @@ function emptyScreen() {
       // 탭 클릭 상태에 따라 보이는 화면 바꾸기
       switch (historyWindowStatus) {
         case RECENT:
-          // rsListElem.toggle();
           recentEmpty.style.display = "block";
           wannagoEmpty.style.display = "none";
           break;
@@ -178,7 +202,6 @@ function emptyScreen() {
       wannagoEmpty.style.display = "none";
       rsListElem[0].style.display = "block";
       break;
-
     default:
       console.error("Check contentsEmptyStatus");
   }
@@ -222,7 +245,7 @@ function userIconDisplay(image) {
       userProfile.src = image;
       return;
     case NOTLOGINED:
-      const userIcon=document.getElementById("user-icon");
+      const userIcon = document.getElementById("user-icon");
       userIcon.style.display = "block";
       notLoginWindowDisp();
       return;
@@ -289,7 +312,7 @@ function loginWithKakao() {
         url: "/v2/user/me",
         // 성공했을때 아래 함수 실행
         success: (loginData) => {
-          const profileImage=loginData.properties.profile_image;
+          const profileImage = loginData.properties.profile_image;
           loginWindow();
           setCookie("profile_image", profileImage);
           setCookie("loginStatus", LOGINED);
@@ -316,7 +339,7 @@ function logoutKakao() {
       notLoginWindowDisp();
       setCookie("loginStatus", NOTLOGINED);
       historyWindowStatus = RECENT;
-      emptyScreen();
+      historyContentsDisplay();
       tabStyle();
       alert("로그아웃 되었습니다.");
     },

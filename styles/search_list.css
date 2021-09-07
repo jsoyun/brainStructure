@@ -22,7 +22,7 @@
 #item-template {
   /* display: none; */
 }
-.item {
+.res-list {
   padding: 10px 20px;
   margin-bottom: 10px;
   border-bottom: 3px solid orange;

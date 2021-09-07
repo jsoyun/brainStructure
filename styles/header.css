@@ -160,6 +160,7 @@ header{
   width: 20rem;
   height: 32rem;
   border: 1px solid #dbdbdb;
+  border-radius: 1rem;
   background-color: #fff;
   display: flex;
   flex: 1 auto 1;
@@ -167,7 +168,6 @@ header{
   z-index: 1200;
   overflow-y: auto;
 }
-
   /* 탭 부분 및 히스토리 헤더 */
 .tab-list{
   display: flex;
@@ -214,38 +214,39 @@ header{
   color: #bbb;
 }
   /* 히스토리 컨텐츠 부분 */
-.restaurant-list{
+.search-history-list{
   /* default로 숨겨둠 */
   display: none;
   margin-top: 1rem;
   margin-left: 1rem;
   margin-right: 0.5rem;
 }
-.restaurant-item-detail{
+.search-history-item-detail{
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
 }
-.restaurant-img-wrap{
-  width: 4rem;
-  height: 4rem;
+.search-history-num{
+  width: 2rem;
+  height: 2rem;
   margin-right: 1rem;
+  font-size: 2rem;
 }
-.restaurant-info-box{
+.search-history-info-box{
   width: 10rem;
   margin-right: 1rem;
 }
-.restaurant-name-wrap{
+.search-history-name-wrap{
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
 }
-.restaurant-name{
+.search-history-name{
   color: #333;
   font-weight: bold;
   font-size: 1rem;
 }
-.restaurant-desc{
+.search-history-desc{
   color: #555;
   font-size: 0.75rem;
 }
@@ -356,8 +357,9 @@ header{
 .footer-container{
   top: 5rem;
   position: relative;
-  padding-left: 1rem;
+  padding: 1rem 1rem;
   padding-bottom: 2rem;
+  border-top: 2px solid #dbdbdb;
   color: #555;
 }
 .footer-logo-box>h1, .footer-logo-box>h2, .footer-logo-box>div{
