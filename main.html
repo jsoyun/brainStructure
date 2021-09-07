@@ -17,7 +17,7 @@
 <body>
   <!-- top menu -->
   <header class="header-mainpage">
-    <iframe width="100%" height="650px" src="https://www.youtube.com/embed/lcU3pruVyUw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen muted autoplay loop></iframe>></iframe>
+    <img src="./videos/appetizing.gif" class="imgGif">
     <!-- 헤더 컨테이너 -->
     <div class="header_container" id="header">
       <!-- 홈 타이틀 박스 -->
@@ -77,16 +77,23 @@
       <div class="history-contents-container">
         <!-- 검색목록 다 없애기 -->
         <div class="history-contents-header">
-          <button id="clear-btn">x clear all</button>
+          <button class="clear-btn">x clear all</button>
         </div>
-        <!-- 검색목록 정보 템플릿 -->
+        <!-- 식당 정보 템플릿 -->
         <ul class="search-history-list">
-          <li class="search-history-item" id="search-history-template">
-            <div class="search-history-detail">
-              <a class="search-history-name">name</a>
-              <span class="search-history-addr">addr</span>
-            </div>
-            <button class="wannaGo-btn"></button>
+          <li class="search-history-item">
+            <section class="search-history-item-detail">
+              <a href="" class="search-history-num">1.</a>
+              <div class="search-history-info-box">
+                <a href="" class="search-history-name-wrap">
+                  <h3 class="search-history-name">식당이름</h3>
+                  <span class="search-history-rating">5</span>
+                </a>
+                <span class="search-history-desc">내용설명</span>
+              </div>
+
+              <button class="wannaGo-btn"></button>
+            </section>
           </li>
         </ul>
         <!-- 검색목록 없을 때 화면 -->
