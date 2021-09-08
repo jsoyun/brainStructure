@@ -16,7 +16,7 @@ $( function() {
 });
 
 function getUserName(){
-    const usrName = document.getElementById("profile-nickname");
+    const usrName = document.getElementById("user-name");
     const cookieUsrName = getCookie("usr_nickname");
     usrName.value = cookieUsrName;
 }

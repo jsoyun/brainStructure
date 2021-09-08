@@ -414,7 +414,7 @@ function loginWithKakao() {
           loginWindow();
           setCookie("usr_nickname", nickname);
           setCookie("profile_image", profileImage);
-          setCookie("email", profileImage);
+          // setCookie("email", profileImage);
           loginStatus = LOGINED;
           setCookie("loginStatus", LOGINED);
           userIconDisplay(profileImage);
