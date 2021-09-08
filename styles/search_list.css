@@ -40,6 +40,10 @@
   font-weight: bolder;
   margin-bottom: 2px;
 }
+.item-name:hover{
+  cursor: pointer;
+  color: orangered;
+}
 .item-menu {
   background-color: hsl(60, 100%, 50%, 5%);
 }
