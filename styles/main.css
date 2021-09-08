@@ -55,11 +55,12 @@ main {
 #categ-title {
   position: relative;
   float: left;
-  width: 6rem;
-  padding-right: 5rem;
+  width: 7rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
   padding-top: 2.5rem;
   color: orange;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: bold;
 }
 /* 카테고리 메뉴 */
@@ -102,7 +103,7 @@ main {
 /* 오늘의추천 타이틀 */
 /* 오늘의추천 타이틀 */
 #random-title {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   color: orange;
   font-weight: bold;
 }
