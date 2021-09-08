@@ -234,7 +234,7 @@ header {
   position: absolute;
   right: 1.5rem;
 }
-/* 히스토리 컨텐츠 부분 */
+/* 검색 히스토리 컨텐츠 부분 */
 .search-history-list {
   /* default로 숨겨둠 */
   display: none;
@@ -275,6 +275,39 @@ header {
   background-size: cover;
   justify-content: right;
 }
+/* 리뷰 히스토리 컨텐츠 부분 */
+.review-history-list {
+  /* default로 숨겨둠 */
+  display: none;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 0.5rem;
+}
+.review-history-item {
+  display: flex;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+#review-history-template {
+  display: none;
+}
+.review-history-detail {
+  display: flex;
+  flex-direction: column;
+  color: #888;
+  font-size: 1rem;
+}
+.review-history-name {
+  color: #333;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.review-history-rating {
+  color: #555;
+  font-size: 0.75rem;
+}
+
 
 /* 히스토리 footer 부분 */
 .history-footer {

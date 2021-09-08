@@ -251,41 +251,42 @@ function historyContentsDisplay() {
   const rsListElem = document.getElementsByClassName("search-history-list");
 
   // 컨텐츠 내용의 유무에 따라 화면 바꾸기
-  switch (contentsEmptyStatus) {
-    case EMPTY:
+  switch (historyWindowStatus) {
+    case RECENT:
       // 탭 클릭 상태에 따라 보이는 화면 바꾸기
-      switch (historyWindowStatus) {
-        case RECENT:
+      switch (contentsEmptyStatus) {
+        case EMPTY:
           recentEmpty.style.display = "block";
           wannagoEmpty.style.display = "none";
           break;
-        case WANNAGO:
+        case NOTEMPTY:
           recentEmpty.style.display = "none";
-          wannagoEmpty.style.display = "block";
-          break;
-        default:
-          console.error("Check historyWindowStatus");
-      }
-      break;
-    case NOTEMPTY:
-      recentEmpty.style.display = "none";
-      wannagoEmpty.style.display = "none";
-      rsListElem[0].style.display = "block";
-      switch (historyWindowStatus) {
-        case RECENT:
+          wannagoEmpty.style.display = "none";
           rsListElem[0].style.display = "block";
           break;
-        case WANNAGO:
-          rsListElem[0].style.display = "none";
+        default:
+          console.error("Check recent contentsEmptyStatus");
+      }
+      break;
+    case WANNAGO:
+      rsListElem[0].style.display = "block";
+      switch (contentsEmptyStatus) {
+        case EMPTY:
           recentEmpty.style.display = "none";
           wannagoEmpty.style.display = "block";
           break;
+        case NOTEMPTY:
+          recentEmpty.style.display = "none";
+          wannagoEmpty.style.display = "none";
+          rsListElem[0].style.display = "none";
+          break;
         default:
-          console.error("Check historyWindowStatus");
+          console.log(contentsEmptyStatus);
+          console.error("Check wannago contentsEmptyStatus");
       }
       break;
     default:
-      console.error("Check contentsEmptyStatus");
+      console.error("Check historyWindowStatus");
   }
 }
 
@@ -408,8 +409,12 @@ function loginWithKakao() {
         // 성공했을때 아래 함수 실행
         success: (loginData) => {
           const profileImage = loginData.properties.profile_image;
+          console.log(loginData.properties);
+          const nickname = loginData.properties.nickname;
           loginWindow();
+          setCookie("usr_nickname", nickname);
           setCookie("profile_image", profileImage);
+          setCookie("email", profileImage);
           loginStatus = LOGINED;
           setCookie("loginStatus", LOGINED);
           userIconDisplay(profileImage);
@@ -435,6 +440,8 @@ function logoutKakao() {
       notLoginWindowDisp();
       loginStatus = NOTLOGINED;
       setCookie("loginStatus", NOTLOGINED);
+      setCookie("usr_nickname", "");
+      setCookie("profile_image", "");
       historyWindowStatus = RECENT;
       historyContentsDisplay();
       tabStyle();

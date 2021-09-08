@@ -70,7 +70,7 @@
           </button>
         </li>
         <li class="tab-item wannaGo-tab">
-          <button id="wannaGo-tab-btn">찜 목록</button>
+          <button id="wannaGo-tab-btn">내 리뷰 목록</button>
         </li>
       </ul>
       <!-- 히스토리 컨텐츠 -->
@@ -79,12 +79,20 @@
         <div class="history-contents-header">
           <button id="clear-btn">x clear all</button>
         </div>
-        <!-- 검색목록 정보 템플릿 -->
         <ul class="search-history-list">
+          <!-- 검색목록 정보 템플릿 -->
           <li class="search-history-item" id="search-history-template">
             <div class="search-history-detail">
               <a class="search-history-name">name</a>
               <span class="search-history-addr">addr</span>
+            </div>
+            <button class="wannaGo-btn"></button>
+          </li>
+          <!-- 리뷰목록 정보 템플릿 -->
+          <li class="review-history-item" id="review-history-template">
+            <div class="review-history-detail">
+              <a class="review-history-name">name</a>
+              <span class="review-history-addr">addr</span>
             </div>
             <button class="wannaGo-btn"></button>
           </li>
@@ -94,7 +102,7 @@
           <span id="recent-empty-text">최근 검색이 없습니다.</span>
         </div>
         <div id="history-contents-emptyWannaGo">
-          <span id="wannaGo-empty-text">찜한 목록이 없습니다.</span>
+          <span id="wannaGo-empty-text">리뷰 작성 목록이 없습니다.</span>
         </div>
       </div>
       <!-- 로그인 및 내정보 버튼 -->
