@@ -36,6 +36,32 @@ ul {
   margin-left: 0.5rem;
 }
 
+/* 리뷰게시판 네비게이션 틀 */
+.floating-menu {
+  font-size: 1rem;
+  background: #fff;
+  border-radius: 10px;
+  padding: 5px;
+  width: auto;
+  z-index: 100;
+  position: fixed;
+  right: 50px;
+  bottom: 10px;
+  opacity: 0.6;
+}
+/* 리뷰게시판 네비게이션 이미지 */
+.toktok{
+  text-align: center;
+}
+/* 리뷰게시판 네비게이션 내부 글 */
+.floating-menu a, 
+.floating-menu h3 {
+  font-size: 1.2em;
+  display: block;
+  margin: 0;
+  color: orange; 
+}
+
 /* 식당 리스트 */
 .search-list-restaurants {
   /* height: 768px; */
