@@ -12,7 +12,14 @@ $( function() {
         // 미래에서 온 리뷰 방지
         maxDate: 0
     });
+    getUserName();
 });
+
+function getUserName(){
+    const usrName = document.getElementById("user-name");
+    const cookieUsrName = getCookie("usr_nickname");
+    usrName.value = cookieUsrName;
+}
 // // ● 별점매기기!!!!!!
 // $('#staR a').click(function(){
 //     $(this).parent().children("a").removeClass("on");
