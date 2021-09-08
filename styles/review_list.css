@@ -3,7 +3,34 @@
     margin: 0;
     padding: 0;
   }
-
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  #btn-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-right: 79%;
+  }
+  #btn-main > h1 {
+    width: 10rem;
+    margin-top: 0.5rem;
+    height: 1.75rem;
+    font-size: 1.5rem;
+    color: orange;
+    text-shadow: 1px 1px 1px #dbdbdb;
+  }
+  #btn-main > h2 {
+      /* display: inline-block; */
+    height: 1.25rem;
+    font-size: 1rem;
+    color: orange;
+    text-shadow: 1px 1px 1px #dbdbdb;
+    margin-top: 0.85rem;
+    padding-left: 0.5rem;
+  }
+/* //////////////////////////////////////////////////////////////// */
 div{
     display: block;
 }
@@ -30,8 +57,8 @@ ul ol li{
 .RestaurantReviewList_Header{
     display: flex;
     flex-direction: row;
-    margin-bottom: 2rem;
-    padding: 0 7rem 0 4rem;
+    margin: 2rem 0 5rem 0;
+    padding: 0 7rem 0 2rem;
     justify-content: space-between;
 }
 .RestaurantReviewList_Title{
@@ -97,7 +124,7 @@ ul ol li{
     border-radius: 50%;
     background-color: #dbdbdb;
     font-size: larger;
-    background-image: url(./person_3.png);
+    background-image: url(../images/person_icon.png);
     background-position: center;
     background-size: 100%;
     
