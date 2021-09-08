@@ -24,7 +24,7 @@ function Category() {
     clickCategory(id, categoryName);
   }
 }
-
+// ● 난수 뽑기
 function randNum() {
   let randNumList = [];
   let num;
@@ -50,7 +50,7 @@ function randNum() {
   randNumList.sort((a, b) => a - b);
   return randNumList;
 }
-
+// ● 랜덤한 난수 API배열로 넣기
 function request() {
   let randomList = randNum();
   const API_URL =
@@ -79,7 +79,33 @@ function request() {
       }
     });
 }
+// ● 오늘의 추천 눌렀을 때 검색한 것으로
+function randRestClick1(){
+  const randRest = document.getElementById("randRestSearch1");
+  randRest.addEventListener("click", ()=>{
+    setCookie("searchKeyword", randRest.innerText);
+    randRest.href="search.html";
+  });
+}
+randRestClick1();
+function randRestClick2(){
+  const randRest = document.getElementById("randRestSearch2");
+  randRest.addEventListener("click", ()=>{
+    setCookie("searchKeyword", randRest.innerText);
+    randRest.href="search.html";
+  });
+}
+randRestClick2();
+function randRestClick3(){
+  const randRest = document.getElementById("randRestSearch3");
+  randRest.addEventListener("click", ()=>{
+    setCookie("searchKeyword", randRest.innerText);
+    randRest.href="search.html";
+  });
+}
+randRestClick3();
 
+// ● 추천 메뉴 단 하나!
 function randomDisplay(randNumList) {
   const API_URL = "http://openapi.gd.go.kr:8088/6b6963726e69736133307158495a53/json/GdModelRestaurantDesignate/1/171/";
 
@@ -95,7 +121,7 @@ function randomDisplay(randNumList) {
     }
   });
 }
-
+// ● 추천메뉴 눌렀을 때 검색한 것으로
 function randDispClick(){
   const reviewName = document.getElementById("review-num");
   reviewName.addEventListener("click", ()=>{
