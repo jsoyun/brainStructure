@@ -58,8 +58,7 @@ main {
   width: 7rem;
   padding-right: 3rem;
   padding-left: 3rem;
-  padding-top: 2.5rem;
-  color: orange;
+  padding-top: 2.5rem;;
   font-size: 1.7rem;
   font-weight: bold;
 }
@@ -101,10 +100,8 @@ main {
   grid-gap: 1rem;
 }
 /* 오늘의추천 타이틀 */
-/* 오늘의추천 타이틀 */
 #random-title {
   font-size: 1.7rem;
-  color: orange;
   font-weight: bold;
 }
 /* 오늘의추천 순위 */
@@ -120,14 +117,18 @@ main {
   margin-bottom: 1rem;
 }
 .res-name{
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   font-weight: bold;
 }
 .res-mainmenu{
   font-size: 1.6rem;
 }
-.res-category, .res-addr{
+.res-category{
   font-size: 1.2rem;
+}
+.res-addr{
+  font-size: 1.2rem;
+  line-height: 1.8rem;
 }
 /* 추천메뉴 전체를 감싸는 큰 박스*/
 .review-container {
