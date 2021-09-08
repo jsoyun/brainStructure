@@ -17,7 +17,7 @@ function reviewBtnClick(){
                 break;
             default:
                 alert('로그인이 필요합니다. 메인페이지로 이동합니다.');
-                reviewBtn[0].href = "main.html";
+                reviewBtn[0].href = "index.html";
                 console.log(1);
                 break;
         }

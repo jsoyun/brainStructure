@@ -87,7 +87,7 @@ function searchHeader() {
   // 버튼을 눌렀을때
   searchBtn.addEventListener("click", () => {
     // 현재 창이 main 페이지면 search 페이지로 연결
-    if (window.location.href.includes("main.html")) {
+    if (window.location.href.includes("index.html")) {
       // 현재 창에서 검색창으로 연결
       searchBtn.href = "search.html";
       // 새탭에서 검색창으로 연결
