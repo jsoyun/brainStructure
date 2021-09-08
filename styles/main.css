@@ -57,9 +57,10 @@ main {
   float: left;
   width: 6rem;
   padding-right: 5rem;
+  padding-top: 2.5rem;
+  color: orange;
   font-size: 1.5rem;
   font-weight: bold;
-  padding-top: 2.5rem;
 }
 /* 카테고리 메뉴 */
 .categ-menu {
@@ -99,31 +100,33 @@ main {
   grid-gap: 1rem;
 }
 /* 오늘의추천 타이틀 */
+/* 오늘의추천 타이틀 */
 #random-title {
   font-size: 1.5rem;
+  color: orange;
   font-weight: bold;
 }
 /* 오늘의추천 순위 */
 .random-box {
   display: inline-block;
   padding: 0;
+  line-height: 2.5rem;
   /* border: 1px solid orangered; */
 }
 .res-image{
-  width: 15rem;
-  height: 10rem;
-  background-color: rgba(0, 0, 0, 0.2);
+  width: 6rem;
+  height: 4rem;
   margin-bottom: 1rem;
 }
 .res-name{
-  font-size: 1.2rem;
+  font-size: 2.2rem;
   font-weight: bold;
 }
-.res-addr{
-  font-size: 0.8rem;
+.res-mainmenu{
+  font-size: 1.6rem;
 }
-.res-category, .res-mainmenu{
-  font-size: 1rem;
+.res-category, .res-addr{
+  font-size: 1.2rem;
 }
 /* 추천메뉴 전체를 감싸는 큰 박스*/
 .review-container {
